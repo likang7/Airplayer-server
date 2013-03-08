@@ -1,0 +1,56 @@
+src = src
+obj = obj
+option = -O2#-fprofile-arcs -ftest-coverage
+
+make: clean createDir $(obj)/AirPlayerServer.o $(obj)/main.o $(obj)/Server.o $(obj)/Command.o\
+		$(obj)/LsCommand.o $(obj)/PlayCommand.o $(obj)/DescribeCommand.o $(obj)/CommandFactory.o\
+                $(obj)/Quality.o $(obj)/Hquality.o $(obj)/Mquality.o $(obj)/Lquality.o $(obj)/ConfigFile.o
+	g++ $(obj)/AirPlayerServer.o $(obj)/main.o -o apserver $(obj)/Server.o $(obj)/Command.o\
+		$(obj)/LsCommand.o $(obj)/PlayCommand.o $(obj)/DescribeCommand.o $(obj)/CommandFactory.o\
+                $(obj)/Quality.o $(obj)/Hquality.o $(obj)/Mquality.o $(obj)/Lquality.o $(obj)/ConfigFile.o ${option} 
+	
+createDir:
+	mkdir -p obj
+
+$(obj)/main.o: 
+	g++ -c $(src)/main.cpp -o $(obj)/main.o ${option} 
+
+$(obj)/AirPlayerServer.o: 
+	g++ -c $(src)/AirPlayerServer.cpp -o $(obj)/AirPlayerServer.o ${option} 
+	
+$(obj)/Server.o: 
+	g++ -c $(src)/Server.cpp -o $(obj)/Server.o ${option} 
+	
+$(obj)/Command.o:
+	g++ -c $(src)/Command.cpp -o $(obj)/Command.o ${option} 
+	
+$(obj)/LsCommand.o:
+	g++ -c $(src)/LsCommand.cpp -o $(obj)/LsCommand.o ${option} 
+	
+$(obj)/PlayCommand.o:
+	g++ -c $(src)/PlayCommand.cpp -o $(obj)/PlayCommand.o ${option} 
+
+$(obj)/DescribeCommand.o:
+	g++ -c $(src)/DescribeCommand.cpp -o $(obj)/DescribeCommand.o ${option} 
+	
+$(obj)/CommandFactory.o:
+	g++ -c $(src)/CommandFactory.cpp -o $(obj)/CommandFactory.o ${option}
+
+$(obj)/Quality.o:
+	g++ -c $(src)/Quality.cpp -o $(obj)/Quality.o ${option}
+
+$(obj)/Hquality.o:
+	g++ -c $(src)/Hquality.cpp -o $(obj)/Hquality.o ${option}
+
+$(obj)/Mquality.o:
+	g++ -c $(src)/Mquality.cpp -o $(obj)/Mquality.o ${option} 
+
+$(obj)/Lquality.o:
+	g++ -c $(src)/Lquality.cpp -o $(obj)/Lquality.o ${option} 
+
+$(obj)/ConfigFile.o: 
+	g++ -c $(src)/ConfigFile.cpp -o $(obj)/ConfigFile.o ${option} 
+	
+clean:
+	-rm $(obj)/*.o
+

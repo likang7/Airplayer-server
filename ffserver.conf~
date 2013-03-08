@@ -1,0 +1,14 @@
+Port 8091
+RTSPPort 5454
+BindAddress 0.0.0.0
+MaxHTTPConnections 2000
+MaxClients 1000
+MaxBandwidth 10000000
+CustomLog -
+NoDaemon
+
+<Stream rtspVideo>
+File "./../../../Videos/Black_Mirror.S2E01.be_right_back.720p_hdtv_x264-fov.mkv"
+Format rtp
+</Stream>
+

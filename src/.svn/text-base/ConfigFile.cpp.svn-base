@@ -1,0 +1,356 @@
+#include"ConfigFile.h"
+#include<iostream>
+#include<fstream>
+#include<sstream>
+#include<cstdlib>
+#include<string.h>
+
+//#define DEBUG
+#define P_HTTPPORT "Port"
+#define P_RTSPPORT "RTSPPort"
+#define P_V_BITRATE "VideoBitRate"
+#define P_V_SIZE "VideoSize"
+#define P_V_FRAMERATE "VideoFrameRate"
+
+#define CONF_HEAD "Port 8090\nRTSPPort 5454\nBindAddress 0.0.0.0\nMaxHTTPConnections 2000\nMaxClients 1000\nMaxBandwidth 10000000\nCustomLog -\nNoDaemon\n"
+
+char STREAM_LABEL1[] = "<Feed feed1.ffm>\nFile ./feed1.ffm\nFileMaxSize 2000M\nLaunch ffmpeg\nACL allow 127.0.0.1\n</Feed>\n\n<Stream rtspVideo>\nFeed feed1.ffm\nFormat rtp\nAudioCodec libmp3lame\nAudioBitRate 64\nAudioChannels 1\nAudioSampleRate 44100\nVideoBitRate 1024\nVideoBufferSize 40\nVideoFrameRate 30\nVideoSize 1280x720\nVideoGopSize 30\nVideoCodec mpeg4\nVideoQMin 3\nVideoQMax 31\n</Stream>\n";
+char STREAM_LABEL2[] = "<Stream rtspVideo>\nFile \"%s\"\nFormat rtp\n</Stream>\n";
+
+
+using namespace std;
+
+/*
+ * 构造函数，初始化ffserver配置文件名
+ */
+ConfigFile::ConfigFile(string confFile,string videoName)
+{
+	this->confFile = confFile;
+	this->videoName = videoName;
+	init();
+	p.qual = string("high");
+	p.fps = string("30");
+	p.size = string("1280x720");
+	p.bitRate = string("1024");
+	isDirect = false;
+}
+
+/*
+ * 初始化HTTPServerPort，RTSPServerPort成员变量
+ */
+void ConfigFile::init()
+{
+	
+	ofstream fout(this->confFile.c_str(),ios::out);
+ 	if(!fout)
+	{
+		#ifdef DEBUG
+		cout << "Open file:" << this->confFile << " fail!" <<endl;
+                #endif
+		exit(1);
+	}
+	fout << CONF_HEAD <<endl;
+	//打开配置文件
+	//cout << "Opening file:"<<this->confFile<<endl;
+	ifstream fin(this->confFile.c_str());
+	if(!fin)
+	{
+		#ifdef DEBUG
+		cout << "Open file:" << this->confFile << " fail!" <<endl;
+                #endif
+		exit(1);
+	}
+	
+	//将文件整个buffer放到stringstream中 
+	stringstream ss;
+	ss << fin.rdbuf();
+
+	// 把ss整个作为一个string放入s，文件所有内容就在s中
+	string s;
+	s = ss.str();
+	
+	//从s中提取HTTP服务器端口号
+	this->HTTPServerPort = getValue((char *)P_HTTPPORT,s);
+	
+	//从s中提取RTSP服务器端口号
+	this->RTSPServerPort = getValue((char *)P_RTSPPORT,s);
+	
+	fin.close();
+}
+
+/*
+ * 获取配置文件中指定属性c的值，s为存储配置文件内容的字符串
+ */
+string ConfigFile::getValue(char* c,string &s)
+{
+	//找到属性c在字符串s中的起始位置
+	int index = s.find(c);
+	//cout << index << endl;
+
+	//找到属性值的结束位置
+	int end = s.find("\n",index+1+strlen(c));
+	//cout << end << endl;
+	
+	//提取属性值
+	string sub = s.substr(index+1+strlen(c),end-index-1-strlen(c));
+	return sub;
+}
+
+/*
+ * 设置配置文件中指定属性c的值为value，s为存储配置文件内容的字符串
+ */
+bool ConfigFile::setValue(char *c, string &value, string &s)
+{
+	//找到属性c在字符串s中的起始位置
+	int index = s.find(c);
+
+	//找到属性值的结束位置
+	int end = s.find("\n",index+1+strlen(c));
+	if(end != -1 && index != -1){
+		//原属性值长度
+		int num = end - index -1 - strlen(c);
+		//原属性值在字符串s中的起始位置
+		index = index + 1 + strlen(c);
+		s.replace(index,num,value,0,value.length());
+		return true;
+	}else{
+		return false;
+	}
+}
+	
+
+/*
+ * 回写视频流参数：VideoSize，VideoFrameRate，VideoBitRate
+ */
+void ConfigFile::writebackProperty()
+{
+	//打开配置文件
+	//cout << "Opening file:"<<this->confFile<<endl;
+	ifstream fin(this->confFile.c_str());
+	if(!fin)
+	{
+		#ifdef DEBUG
+		cout << "Open file:" << this->confFile << " fail!" <<endl;
+                #endif
+		exit(1);
+	}
+	
+	//将文件整个buffer放到stringstream中 
+	stringstream ss;
+	ss << fin.rdbuf();
+
+	//把ss整个作为一个string放入s，文件所有内容就在s中 
+	string s;
+	s = ss.str();
+
+	//关闭文件
+	fin.close();
+	
+	//设置视频流参数：VideoSize
+	if(!setValue((char *)P_V_SIZE,p.size,s))
+	{
+		#ifdef DEBUG
+		cout << "setting " << P_V_SIZE << " fail!" << endl;
+                #endif
+	}else{
+		#ifdef DEBUG
+		cout << "setting " << P_V_SIZE << " succeed!" << endl;
+                #endif
+	}
+
+	//设置视频流参数：VideoFrameRate
+	if(!setValue((char *)P_V_FRAMERATE,p.fps,s))
+	{
+		#ifdef DEBUG
+		cout << "setting " << P_V_FRAMERATE << " fail!" << endl;
+                #endif
+	}else{
+		#ifdef DEBUG
+		cout << "setting " << P_V_FRAMERATE << " succeed!" <<endl;
+		#endif
+	}
+
+	//设置视频流参数：VideoBitRate
+	if(!setValue((char *)P_V_BITRATE,p.bitRate,s))
+	{
+   		#ifdef DEBUG
+		cout << "setting " << P_V_BITRATE << " fail!" << endl;
+		#endif
+	}else{
+		#ifdef DEBUG
+		cout << "setting " << P_V_BITRATE << " succeed!" <<endl;
+		#endif
+	}
+	
+	//把s重新写回文件 
+	ofstream fout(this->confFile.c_str());
+	fout << s;
+	fout.close();
+}
+
+/*
+ * 解析"quality:high"类型的属性：属性值对
+ */
+void ConfigFile::parseString(string &s)
+{
+	int index;
+	index = s.find(":");
+	if(index == -1){
+       		#ifdef DEBUG
+		cout << "unfound value for " << s << "!" << endl;
+		#endif
+		return;
+	}
+	string sub = s.substr(0,index);
+	string value = s.substr(index+1,s.size()-index-1);
+	
+	if(sub.compare("quality") == 0)
+	{
+		//视频质量。是对下面的视频参数的概括性描述
+		p.qual = value;
+	}else if(sub.compare("fps") == 0)
+	{
+		//帧率
+		p.fps = value;
+	}else if(sub.compare("size") == 0)
+	{
+		//分辨率
+		p.size = value;
+	}else if(sub.compare("bitRate") == 0)
+	{
+		//比特率
+		p.bitRate = value;		
+	}else {
+		//没有定义的属性
+		#ifdef DEBUG
+		cout << "found undefined property " << sub << "!" << endl; 
+		#endif
+	}
+
+}
+
+/*
+ *解析"quality:high,fps:30,..."类型的字符串
+ */
+void ConfigFile::parse(string &s)
+{
+	//cout<<s[s.size()-1]<<endl;
+	string temp = s.substr(s.length()-1,1);
+    	//cout << temp << endl;
+	if(temp.compare(",") == 0)
+	{
+		//cout<<"Hello world"<<endl;	
+	}else
+	{
+		s.append(",");
+	}
+	int index;
+	//cout<<s<<endl;
+	while((index = s.find(",")) != -1)
+	{
+		//将属性分解
+		string sub = s.substr(0,index);
+		s = s.substr(index+1,s.size()-index-1);
+		//对属性参数进行解析
+		parseString(sub);
+	}
+	//cout<<"test"<<endl;
+}
+
+/*
+ *在配置文件中追加流标签信息
+ */
+void ConfigFile::add(char* stream)
+{
+	ofstream fout(this->confFile.c_str(),ios::app);
+ 	if(!fout)
+	{
+		#ifdef DEBUG
+		cout << "Open file:" << this->confFile << " fail!" <<endl;
+                #endif
+		exit(1);
+	}
+	fout << stream <<endl;
+}
+/*
+ * 在获取到要设置的视频质量后，使用策略模式获取相对应的策略对参数进行设置
+ */
+void ConfigFile::setVedioQuality(string &s)
+{
+	parse(s);
+	Quality* q;
+	if(p.qual.compare("high") == 0)
+	{
+		//高质量策略
+		q = new Hquality(this->videoName);
+	}else if(p.qual.compare("medium") == 0)
+	{
+		//中等质量
+		q = new Mquality(this->videoName);
+	}else if(p.qual.compare("low") == 0)
+	{
+		//低质量
+		q = new Lquality(this->videoName);
+	}else
+	{
+		//默认直接播放
+		//q = new Hquality();
+		isDirect = true;
+	}
+	//根据策略设置参数
+	if(!isDirect)
+	{
+		add(STREAM_LABEL1);
+		q->set(&p);
+		writebackProperty();
+	}
+	else
+	{
+		char temp[1024];
+		memset(temp, '0', strlen(temp) );
+		sprintf(temp,STREAM_LABEL2,videoName.c_str());
+		add(temp);
+	}
+	//回写参数进配置文件
+	return;
+}
+	
+/*
+ * 获取配置文件名
+ */
+string ConfigFile::getConfigFileName()
+{
+	return this->confFile;
+}
+
+/*
+ * 获取ffserverHTTP服务器监听的端口号
+ */
+string ConfigFile::getHTTPServerPort()
+{
+	return this->HTTPServerPort;
+}
+
+/*
+ * 获取ffserverRTSP服务器监听的端口号
+ */
+string ConfigFile::getRTSPServerPort()
+{
+	return this->RTSPServerPort;
+}
+
+/*
+ * 是否直接播放
+ */
+bool ConfigFile::getIsDirect()
+{
+	return this->isDirect;
+}
+
+/*
+ * 析构函数
+ */
+ConfigFile::~ConfigFile()
+{
+}
+

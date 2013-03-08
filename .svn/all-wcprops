@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/sy/!svn/ver/6200/airplayer/sourceCode/AirPlayerServer
+END
+client.c
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/sy/!svn/ver/6200/airplayer/sourceCode/AirPlayerServer/client.c
+END
+log.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/sy/!svn/ver/6200/airplayer/sourceCode/AirPlayerServer/log.txt
+END
+ffserver.conf
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/sy/!svn/ver/6200/airplayer/sourceCode/AirPlayerServer/ffserver.conf
+END
+ffserver.config
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/sy/!svn/ver/6200/airplayer/sourceCode/AirPlayerServer/ffserver.config
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/sy/!svn/ver/6200/airplayer/sourceCode/AirPlayerServer/makefile
+END

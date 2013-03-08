@@ -1,0 +1,150 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AirPlayerServer	AirPlayerServer.cpp	/^AirPlayerServer::AirPlayerServer(int portNum) : $/;"	f	class:AirPlayerServer
+AirPlayerServer	AirPlayerServer.h	/^class AirPlayerServer : public Server$/;"	c
+BUFFER_SIZE	PlayCommand.cpp	17;"	d	file:
+BUFSIZE	LsCommand.cpp	7;"	d	file:
+BUFSIZE	Server.h	6;"	d
+CONF_HEAD	ConfigFile.cpp	15;"	d	file:
+Command	Command.cpp	/^Command::Command() :$/;"	f	class:Command
+Command	Command.h	/^class Command$/;"	c
+CommandFactory	CommandFactory.h	/^class CommandFactory$/;"	c
+ConfigFile	ConfigFile.cpp	/^ConfigFile::ConfigFile(string confFile,string videoName)$/;"	f	class:ConfigFile
+ConfigFile	ConfigFile.h	/^class ConfigFile$/;"	c
+DEBUG	Mquality.cpp	7;"	d	file:
+DescribeCommand	DescribeCommand.cpp	/^DescribeCommand::DescribeCommand(const char* _request) :$/;"	f	class:DescribeCommand
+DescribeCommand	DescribeCommand.h	/^class DescribeCommand : public Command$/;"	c
+DynamicRTSPServer	mediaServer/DynamicRTSPServer.cpp	/^DynamicRTSPServer::DynamicRTSPServer(UsageEnvironment& env, int ourSocket,$/;"	f	class:DynamicRTSPServer
+DynamicRTSPServer	mediaServer/DynamicRTSPServer.hh	/^class DynamicRTSPServer: public RTSPServerSupportingHTTPStreaming {$/;"	c
+ERROR	Server.h	/^	ERROR,$/;"	e	enum:TYPE
+ETH_NAME	Server.cpp	20;"	d	file:
+HTTPServerPort	ConfigFile.h	/^		std::string HTTPServerPort;$/;"	m	class:ConfigFile
+Hquality	Hquality.cpp	/^Hquality::Hquality(string video):Quality(video)$/;"	f	class:Hquality
+Hquality	Hquality.h	/^class Hquality:public Quality$/;"	c
+Lquality	Lquality.cpp	/^Lquality::Lquality(string video):Quality(video)$/;"	f	class:Lquality
+Lquality	Lquality.h	/^class Lquality:public Quality$/;"	c
+LsCommand	LsCommand.cpp	/^LsCommand::LsCommand(const char* _path) :$/;"	f	class:LsCommand
+LsCommand	LsCommand.h	/^class LsCommand : public Command$/;"	c
+Mquality	Mquality.cpp	/^Mquality::Mquality(string video):Quality(video)$/;"	f	class:Mquality
+Mquality	Mquality.h	/^class Mquality:public Quality$/;"	c
+NEW_SMS	mediaServer/DynamicRTSPServer.cpp	84;"	d	file:
+OK	Server.h	/^	OK$/;"	e	enum:TYPE
+P_HTTPPORT	ConfigFile.cpp	9;"	d	file:
+P_RTSPPORT	ConfigFile.cpp	10;"	d	file:
+P_V_BITRATE	ConfigFile.cpp	11;"	d	file:
+P_V_FRAMERATE	ConfigFile.cpp	13;"	d	file:
+P_V_SIZE	ConfigFile.cpp	12;"	d	file:
+PlayCommand	PlayCommand.cpp	/^PlayCommand::PlayCommand(const char* _request) :$/;"	f	class:PlayCommand
+PlayCommand	PlayCommand.h	/^class PlayCommand : public Command$/;"	c
+Property	Property.h	/^struct Property{$/;"	s
+Quality	Quality.cpp	/^Quality::Quality(string video)$/;"	f	class:Quality
+Quality	Quality.h	/^class Quality$/;"	c
+REQUEST_FIFO	PlayCommand.cpp	18;"	d	file:
+RTSPServerPort	ConfigFile.h	/^		std::string RTSPServerPort;$/;"	m	class:ConfigFile
+STREAM_LABEL1	ConfigFile.cpp	/^char STREAM_LABEL1[] = "<Feed feed1.ffm>\\nFile .\/feed1.ffm\\nFileMaxSize 2000M\\nLaunch ffmpeg\\nACL allow 127.0.0.1\\n<\/Feed>\\n\\n<Stream rtspVideo>\\nFeed feed1.ffm\\nFormat rtp\\nAudioCodec libmp3lame\\nAudioBitRate 64\\nAudioChannels 1\\nAudioSampleRate 44100\\nVideoBitRate 1024\\nVideoBufferSize 40\\nVideoFrameRate 30\\nVideoSize 1280x720\\nVideoGopSize 30\\nVideoCodec mpeg4\\nVideoQMin 3\\nVideoQMax 31\\n<\/Stream>\\n";$/;"	v
+STREAM_LABEL2	ConfigFile.cpp	/^char STREAM_LABEL2[] = "<Stream rtspVideo>\\nFile \\"%s\\"\\nFormat rtp\\n<\/Stream>\\n";$/;"	v
+Server	Server.cpp	/^Server::Server(int portNum):listenfd(-1)$/;"	f	class:Server
+Server	Server.h	/^class Server$/;"	c
+TYPE	Server.h	/^enum TYPE$/;"	g
+WARNING	Server.h	/^	WARNING,$/;"	e	enum:TYPE
+_DYNAMIC_RTSP_SERVER_HH	mediaServer/DynamicRTSPServer.hh	22;"	d
+__AIRPLAYERSERVER_H__	AirPlayerServer.h	2;"	d
+__COMMANDFACTORY_H__	CommandFactory.h	2;"	d
+__COMMAND_H__	Command.h	2;"	d
+__CONFIGFILE_H__	ConfigFile.h	2;"	d
+__DESCRIBECOMMAND__H	DescribeCommand.h	2;"	d
+__HQUALITY_H__	Hquality.h	2;"	d
+__LQUALITY_H__	Lquality.h	2;"	d
+__LSCOMMAND__H	LsCommand.h	2;"	d
+__MQUALITY_H__	Mquality.h	2;"	d
+__PLAYCOMMAND__H	PlayCommand.h	2;"	d
+__PPROPERTY_H__	Property.h	2;"	d
+__QUALITY_H__	Quality.h	2;"	d
+__SERVER_H__	Server.h	2;"	d
+add	ConfigFile.cpp	/^void ConfigFile::add(char* stream)$/;"	f	class:ConfigFile
+bitRate	Property.h	/^	std::string bitRate;$/;"	m	struct:Property
+confFile	ConfigFile.h	/^		std::string confFile;$/;"	m	class:ConfigFile
+create	CommandFactory.cpp	/^Command* CommandFactory::create(const string type, const char* request)$/;"	f	class:CommandFactory
+createMediaServer	main.cpp	/^void* createMediaServer(void* arg){$/;"	f
+createNew	mediaServer/DynamicRTSPServer.cpp	/^DynamicRTSPServer::createNew(UsageEnvironment& env, Port ourPort,$/;"	f	class:DynamicRTSPServer
+createNewSMS	mediaServer/DynamicRTSPServer.cpp	/^static ServerMediaSession* createNewSMS(UsageEnvironment& env,$/;"	f	file:
+daemonize	Server.cpp	/^void Server::daemonize(const string cmd)$/;"	f	class:Server
+demux	mediaServer/DynamicRTSPServer.cpp	/^static MatroskaFileServerDemux* demux;$/;"	v	file:
+execute	DescribeCommand.cpp	/^const char* DescribeCommand::execute()$/;"	f	class:DescribeCommand
+execute	LsCommand.cpp	/^const char* LsCommand::execute()$/;"	f	class:LsCommand
+execute	PlayCommand.cpp	/^const char* PlayCommand::execute()$/;"	f	class:PlayCommand
+fifo_send	PlayCommand.cpp	/^bool PlayCommand::fifo_send(char *command,char *read_fifo_path)$/;"	f	class:PlayCommand
+fps	Property.h	/^	std::string fps;$/;"	m	struct:Property
+getConfigFileName	ConfigFile.cpp	/^string ConfigFile::getConfigFileName()$/;"	f	class:ConfigFile
+getHTTPServerPort	ConfigFile.cpp	/^string ConfigFile::getHTTPServerPort()$/;"	f	class:ConfigFile
+getInstance	AirPlayerServer.cpp	/^AirPlayerServer* AirPlayerServer::getInstance(int portNum)$/;"	f	class:AirPlayerServer
+getIsDirect	ConfigFile.cpp	/^bool ConfigFile::getIsDirect()$/;"	f	class:ConfigFile
+getLocalIP	Server.cpp	/^const char* Server::getLocalIP() $/;"	f	class:Server
+getPort	Server.cpp	/^int Server::getPort() const$/;"	f	class:Server
+getQuality	ConfigFile.cpp	/^const std::string& ConfigFile::getQuality(){$/;"	f	class:ConfigFile
+getRTSPServerPort	ConfigFile.cpp	/^string ConfigFile::getRTSPServerPort()$/;"	f	class:ConfigFile
+getSize	Quality.cpp	/^char* Quality::getSize()$/;"	f	class:Quality
+getSomething	DescribeCommand.cpp	/^char* DescribeCommand::getSomething(char *command)$/;"	f	class:DescribeCommand
+getValue	ConfigFile.cpp	/^string ConfigFile::getValue(char* c,string &s)$/;"	f	class:ConfigFile
+getline_from_fifo	PlayCommand.cpp	/^int getline_from_fifo(int fd_read,char* str, int n)$/;"	f
+hostname	Server.h	/^        std::string hostname;$/;"	m	class:Server
+init	ConfigFile.cpp	/^void ConfigFile::init()$/;"	f	class:ConfigFile
+init	Server.cpp	/^void Server::init()$/;"	f	class:Server
+init	main.cpp	/^void init(int argv, char* args[]){$/;"	f
+instance	AirPlayerServer.h	/^        static AirPlayerServer* instance;$/;"	m	class:AirPlayerServer
+isDirect	ConfigFile.h	/^      		bool isDirect;$/;"	m	class:ConfigFile
+linux	main.cpp	15;"	d	file:
+listenfd	Server.h	/^        int listenfd;$/;"	m	class:Server
+logInf	Server.cpp	/^void Server::logInf(TYPE type, const string str)$/;"	f	class:Server
+lookupServerMediaSession	mediaServer/DynamicRTSPServer.cpp	/^DynamicRTSPServer::lookupServerMediaSession(char const* streamName) {$/;"	f	class:DynamicRTSPServer
+main	main.cpp	/^int main(int argv, char* args[])$/;"	f
+main	test4ConfFile.cpp	/^int main()$/;"	f
+main	test4Quality.cpp	/^int main()$/;"	f
+newMatroskaDemuxWatchVariable	mediaServer/DynamicRTSPServer.cpp	/^static char newMatroskaDemuxWatchVariable;$/;"	v	file:
+onMatroskaDemuxCreation	mediaServer/DynamicRTSPServer.cpp	/^static void onMatroskaDemuxCreation(MatroskaFileServerDemux* newDemux, void* \/*clientData*\/) {$/;"	f	file:
+openffserver	main.cpp	/^ bool openffserver(const char* path = ".\/ffserver")$/;"	f
+openmediaserver	main.cpp	/^bool openmediaserver(){$/;"	f
+p	ConfigFile.h	/^		struct Property p;$/;"	m	class:ConfigFile	typeref:struct:ConfigFile::Property
+parse	ConfigFile.cpp	/^void ConfigFile::parse(string &s)$/;"	f	class:ConfigFile
+parseString	ConfigFile.cpp	/^void ConfigFile::parseString(string &s)$/;"	f	class:ConfigFile
+parse_and_process	AirPlayerServer.cpp	/^const string AirPlayerServer::parse_and_process(char* request)$/;"	f	class:AirPlayerServer
+path	LsCommand.h	/^        const char* path;$/;"	m	class:LsCommand
+pathFFserver	main.cpp	/^char* pathFFserver = (char*)".\/ffserver";$/;"	v
+portNum	main.cpp	/^int portNum = 8188;$/;"	v
+printHelp	main.cpp	/^void printHelp()$/;"	f
+qual	Property.h	/^	std::string qual;$/;"	m	struct:Property
+request	DescribeCommand.h	/^        const char* request;$/;"	m	class:DescribeCommand
+request	PlayCommand.h	/^        const char* request;$/;"	m	class:PlayCommand
+res	Command.h	/^    	std::string* res;$/;"	m	class:Command
+rtspServerPortNum	main.cpp	/^int rtspServerPortNum = 8554;$/;"	v
+run	Server.cpp	/^void Server::run()$/;"	f	class:Server
+serv_addr	Server.h	/^        struct sockaddr_in serv_addr;          $/;"	m	class:Server	typeref:struct:Server::sockaddr_in
+serve	AirPlayerServer.cpp	/^void AirPlayerServer::serve(int sockfd)$/;"	f	class:AirPlayerServer
+set	Hquality.cpp	/^struct Property* Hquality::set(struct Property *p)$/;"	f	class:Hquality
+set	Lquality.cpp	/^struct Property* Lquality::set(struct Property *p)$/;"	f	class:Lquality
+set	Mquality.cpp	/^struct Property* Mquality::set(struct Property *p)$/;"	f	class:Mquality
+set	Quality.h	/^		virtual struct Property * set(struct Property *){};$/;"	f	class:Quality
+setPort	Server.cpp	/^void Server::setPort(int portNum)$/;"	f	class:Server
+setValue	ConfigFile.cpp	/^bool ConfigFile::setValue(char *c, string &value, string &s)$/;"	f	class:ConfigFile
+setVedioQuality	ConfigFile.cpp	/^void ConfigFile::setVedioQuality(string &s)$/;"	f	class:ConfigFile
+size	Property.h	/^	std::string size;$/;"	m	struct:Property
+toString	DescribeCommand.cpp	/^string DescribeCommand::toString()$/;"	f	class:DescribeCommand
+toString	LsCommand.cpp	/^string LsCommand::toString()$/;"	f	class:LsCommand
+toString	PlayCommand.cpp	/^string PlayCommand::toString()$/;"	f	class:PlayCommand
+v_file	Quality.h	/^		std::string v_file;$/;"	m	class:Quality
+videoName	ConfigFile.h	/^		std::string videoName;$/;"	m	class:ConfigFile
+writebackProperty	ConfigFile.cpp	/^void ConfigFile::writebackProperty()$/;"	f	class:ConfigFile
+~AirPlayerServer	AirPlayerServer.cpp	/^AirPlayerServer::~AirPlayerServer()$/;"	f	class:AirPlayerServer
+~Command	Command.cpp	/^Command::~Command()$/;"	f	class:Command
+~ConfigFile	ConfigFile.cpp	/^ConfigFile::~ConfigFile()$/;"	f	class:ConfigFile
+~DynamicRTSPServer	mediaServer/DynamicRTSPServer.cpp	/^DynamicRTSPServer::~DynamicRTSPServer() {$/;"	f	class:DynamicRTSPServer
+~Hquality	Hquality.cpp	/^Hquality::~Hquality()$/;"	f	class:Hquality
+~Lquality	Lquality.cpp	/^Lquality::~Lquality()$/;"	f	class:Lquality
+~LsCommand	LsCommand.cpp	/^LsCommand::~LsCommand()$/;"	f	class:LsCommand
+~Mquality	Mquality.cpp	/^Mquality::~Mquality()$/;"	f	class:Mquality
+~Quality	Quality.cpp	/^Quality::~Quality()$/;"	f	class:Quality
+~Server	Server.cpp	/^Server::~Server()$/;"	f	class:Server

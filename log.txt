@@ -1,0 +1,100 @@
+3311: can't open
+2012-7-2 22:45:36 13: can't open
+2012-7-7 11:18:33 0424: can't open
+2012-7-7 11:18:38 bind error
+2012-7-7 11:18:39 bind error
+2012-7-7 11:22:29 245: can't open
+2012-7-7 11:25:23 13: can't open
+2012-7-7 11:26:10 13: can't open
+2012-7-7 11:26:40 [A: can't open [A
+2012-7-7 11:26:56 12313: can't open 12313
+2012-7-8 12:36:49 : can't open 45
+2012-7-8 12:37:39 : can't open .4534
+2012-7-8 12:37:42 : can't open 35
+2012-7-8 16:25:7 getLocalP: ioctl error
+2012-7-8 16:43:54 ERR cannot list the directory at 
+2012-7-8 16:44:1 ERR cannot list the directory at fsfas
+2012-7-8 16:44:5 ERR cannot get the rstp url of file gdgsd
+2012-7-8 16:44:9 ERR cannot list the directory at 
+2012-7-21 0:53:54 ERROR cannot get the rstp url of file ./1.mkv,quality:low
+
+2012-7-21 0:54:6 ERROR cannot get the rstp url of file ./1.mkv,quality:low
+
+2012-7-21 0:54:20 ERROR cannot list the directory at 
+2012-7-21 0:54:35 ERROR cannot get the rstp url of file ./1.mkv,quality:low
+
+2012-7-21 0:55:55 ERROR cannot get the rstp url of file ./2.mp4,quality:low
+
+2012-7-21 1:4:29 ERROR cannot get the rstp url of file ./2.mp4,quality:low
+
+2012-7-21 1:4:52 ERROR cannot get the rstp url of file ./2.mp4,quality:low
+
+2012-7-21 1:5:54 ERROR cannot get the rstp url of file 
+
+2012-7-21 1:6:2 ERROR cannot get the rstp url of file 2.mp4,quality:low
+
+2012-7-21 1:6:14 ERROR cannot get the rstp url of file 2.mp4,quality:high
+
+2012-7-21 1:6:33 ERROR cannot get the rstp url of file 1.mkv,quality:low
+
+2012-7-21 1:40:41 bind error
+2012-7-21 13:30:41 ERROR cannot list the directory at 
+2012-7-21 16:34:6 ERROR cannot get the rstp url of file ./../../../../media/9C7AA35A7AA32FC6/Videos/Xiu.XiuThe.Sent.Down.Girl.1998.SUBBED.DVDRiP.XviD-WRD.avi,quality:medium
+
+2012-7-21 16:35:4 ERROR cannot get the rstp url of file ./../../../../media/9C7AA35A7AA32FC6/Videos/Xiu.XiuThe.Sent.Down.Girl.1998.SUBBED.DVDRiP.XviD-WRD.avi,quality:low
+
+2012-7-21 16:37:26 ERROR cannot get the rstp url of file ./钢琴师.mp4,quality:medium
+
+2012-7-21 16:37:51 ERROR cannot get the rstp url of file ./hfghfg.mp4,quality:medium
+
+2012-7-21 16:47:2 ERROR cannot get the rstp url of file ./hfghfg.mp4,quality:medium
+
+2012-7-21 16:51:4 ERROR Unknown command : 
+2012-7-21 16:51:19 ERROR cannot get the rstp url of file 爱在暹罗.The.Love.of.Siam.2007.D9.MiniSD-TLF.mkv,quality:low
+
+2012-7-21 16:51:39 ERROR cannot get the rstp url of file 爱在暹罗.The.Love.of.Siam.2007.D9.MiniSD-TLF.mkv,quality:low
+
+2012-7-21 17:29:37 ERROR cannot get the rstp url of file ./1.avi,quality:high
+
+2012-7-21 17:29:37 ERROR cannot get the rstp url of file ./hfghfg.mp4,quality:medium
+
+2012-7-21 17:29:47 ERROR cannot get the rstp url of file ./1.avi,quality:0
+
+2012-7-21 17:30:1 ERROR cannot get the rstp url of file ./1.avi,quality:medium
+
+2012-7-21 17:30:2 ERROR cannot get the rstp url of file ./1.avi,quality:high
+
+2012-7-21 17:32:31 ERROR cannot get the rstp url of file ./1.mkv,quality:medium
+
+2012-7-21 18:2:17 ERROR cannot get the rstp url of file ./../The.Love.of.Siam.2007.D9.MiniSD-TLF.mkv,quality:high
+
+2012-7-21 18:2:56 ERROR cannot get the rstp url of file ./hfghfg.mp4,quality:high
+
+2013-2-27 13:54:37 ERROR cannot get the rstp url of file ./../../../Videos/布达佩斯之恋.Gloomy.Sunday.1999.MINISD.TLF.mkv,quality:high
+
+2013-2-27 13:54:51 ERROR cannot get the rstp url of file ./../../../Videos/布达佩斯之恋.Gloomy.Sunday.1999.MINISD.TLF.mkv,quality:medium
+
+2013-2-27 13:55:26 ERROR cannot get the rstp url of file ./../../../Videos/布达佩斯之恋.Gloomy.Sunday.1999.MINISD.TLF.mkv,quality:low
+
+2013-2-27 14:1:45 ERROR cannot get the rstp url of file ./../../../Videos/布达佩斯之恋.mkv,quality:low
+
+2013-2-27 14:4:23 ERROR cannot get the rstp url of file ./布达佩斯之恋.mkv,quality:0
+
+2013-2-27 14:30:59 ERROR cannot get the rstp url of file ./布达佩斯之恋.mkv,quality:low
+
+2013-2-27 15:32:31 ERROR cannot get the rstp url of file ./../../../Videos/第07话_断层的发散.mp4,quality:high
+
+2013-2-27 15:47:41 ERROR cannot get the rstp url of file ./布达佩斯之恋.mkv,quality:high
+
+2013-2-27 15:50:49 ERROR cannot get the rstp url of file ./../../../Videos/第07话_断层的发散.mp4,quality:high
+
+2013-2-27 19:59:22 ERROR cannot get the rstp url of file ./布达佩斯之恋.mkv,quality:high
+
+2013-2-28 17:41:13 ERROR cannot get the rstp url of file ./布达佩斯之恋.mkv,quality:0
+
+2013-2-28 17:41:21 ERROR cannot get the rstp url of file ./布达佩斯之恋.mkv,quality:0
+
+2013-3-4 10:13:56 ERROR cannot get the rstp url of file ./../../../Videos/第07话_断层的发散.mp4,quality:high
+
+2013-3-4 15:21:47 ERROR cannot get the description of file ./../../../Videos/Who.Framed.Roger.Rabbit.1988.BluRay.iPad.720p.AAC.x264-CHDPAD/Who.Framed.Roger.Rabbit.1988.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4
+
