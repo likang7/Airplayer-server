@@ -1,5 +1,5 @@
 INCLUDES = -I./include/UsageEnvironment/include -I./include/groupsock/include -I./include/liveMedia/include -I./include/BasicUsageEnvironment/include
-
+#
 ##### Change the following for your environment:
 COMPILE_OPTS =		$(INCLUDES) -I. -O2 -DSOCKLEN_T=socklen_t -D_LARGEFILE_SOURCE=1
 C =			c
