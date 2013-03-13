@@ -19,22 +19,25 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 // Implementation
 
 #include "DynamicRTSPServer.h"
+#include <BasicUsageEnvironment.hh>
 #include <liveMedia.hh>
 #include <cstring>
 #include <string>
 #include <cstdlib>
 #include <vector>
 #include <iostream>
+#include <sys/stat.h>
 using std::string;
 using std::vector;
 using std::cout;
 using std::endl;
-//forward
-struct MediaStream{
-  string streamType;
-  string format;
-};
-int readTrackinfo(const char *cmd, vector<MediaStream>& res); 
+/*
+**forward
+*/
+int readTrackinfo(const char *cmd, std::vector<MediaStream>& res); 
+int convertMediaWithoutReEncoding(const std::string srcFile, const std::string destpath,
+      const std::string destFormat, const std::vector<MediaStream>& res, UsageEnvironment* env);
+int createMPEG2TransportStreamIndexer(const std::string inputFileName,UsageEnvironment* env);
 
 DynamicRTSPServer*
 DynamicRTSPServer::createNew(UsageEnvironment& env, Port ourPort,
@@ -171,6 +174,7 @@ static ServerMediaSession* createNewSMS(UsageEnvironment& env,
     unsigned indexFileNameLen = strlen(fileName) + 2; // allow for trailing "x\0"
     char* indexFileName = new char[indexFileNameLen];
     sprintf(indexFileName, "%sx", fileName);
+    createMPEG2TransportStreamIndexer(fileName, &env);
     NEW_SMS("MPEG Transport Stream");
     sms->addSubsession(MPEG2TransportFileServerMediaSubsession::createNew(env, fileName, indexFileName, reuseSource));
     delete[] indexFileName;
@@ -189,9 +193,11 @@ static ServerMediaSession* createNewSMS(UsageEnvironment& env,
     NEW_SMS("DV Video");
     sms->addSubsession(DVVideoFileServerMediaSubsession::createNew(env, fileName, reuseSource));
   } else if (strcmp(extension, ".mkv") == 0 || strcmp(extension, ".webm") == 0) {
+    // As mkv format is not support good, I don't want to stream it.
+    goto CONVERT;
     // Assumed to be a Matroska file (note that WebM ('.webm') files are also Matroska files)
     NEW_SMS("Matroska video+audio+(optional)subtitles");
-
+    //not execute now
     // Create a Matroska file server demultiplexor for the specified file.  (We enter the event loop to wait for this to complete.)
     newMatroskaDemuxWatchVariable = 0;
     MatroskaFileServerDemux::createNew(env, fileName, onMatroskaDemuxCreation, NULL);
@@ -203,66 +209,48 @@ static ServerMediaSession* createNewSMS(UsageEnvironment& env,
     }
   }
   //mp4 code start.
-  else if((strcmp(extension, ".mp4") == 0) || (strcmp(extension, ".m4v") == 0)){  
-    NEW_SMS("MPEG-4 Video/Audio");  
+  //can noly process video encoder H264
+  else if((strcmp(extension, ".mp4") == 0) || (strcmp(extension, ".m4v") == 0)){   
     //read mp4 info
-    std::string cmd = std::string("ffprobe") + " " +  fileName + " 2>&1";
+CONVERT:
+    std::string cmd = std::string("ffmpeg -i ") +  fileName + " 2>&1";
     std::vector<MediaStream> res;
     int r = readTrackinfo(cmd.c_str(), res);
     if(r < 0){
       return sms;
     }
+
     for(std::size_t i = 0; i < res.size(); i++){
-      std::cout << res[i].streamType << ": " << res[i].format << endl;
+      std::cout << res[i].streamType << ": " << res[i].content << endl;
     }
 
-    for(std::size_t i = 0; i < res.size(); i++){
-      if(res[i].streamType == "Video"){
-        if(res[i].format == "h264"){
-          string vname = string(fileName) + ".h264";
-          const string cmd = string("echo N | ffmpeg") + " -i " + fileName + \
-              " -vcodec copy -an -vbsf h264_mp4toannexb " + vname;
-          system(cmd.c_str());
-          NEW_SMS("H.264 Video");  
-          OutPacketBuffer::maxSize = 300000; // allow for some possibly large H.264 frames  
-          sms->addSubsession(H264VideoFileServerMediaSubsession::createNew(env, vname.c_str(), reuseSource));  
-        }
-      }
-      else if(res[i].streamType == "Audio"){
-        if(res[i].format == "aac"){
-          string vname = string(fileName) + ".aac";
-          const string cmd = string("echo N | ffmpeg") + " -i " + fileName + \
-              " -acodec copy " + vname;
-          system(cmd.c_str());
-          //NEW_SMS("H.264 Video");  
-          sms->addSubsession(ADTSAudioFileServerMediaSubsession::createNew(env, vname.c_str(), reuseSource)); 
-        }
-        else if(res[i].format == "ac3"){
-          string vname = string(fileName) + ".ac3";
-          const string cmd = string("echo N | ffmpeg") + " -i " + fileName + \
-              " -acodec copy " + vname;
-          system(cmd.c_str());
-          // Assumed to be an AC-3 Audio file:
-          //NEW_SMS("AC-3 Audio");
-          sms->addSubsession(AC3AudioFileServerMediaSubsession::createNew(env, vname.c_str(), reuseSource));
-        }
-      }
-      else{
+    const string destFormat = "ts";
+    const string destpath = string(fileName) + ".ts";
+    r = convertMediaWithoutReEncoding(fileName, destpath, destFormat, res, &env);
+    if(r < 0){
+      return sms;
+    }
+    if(destFormat == "ts"){
+      NEW_SMS("MPEG Transport Stream");
+      sms->addSubsession(MPEG2TransportFileServerMediaSubsession::createNew(env, destpath.c_str(), 
+            (destpath + 'x').c_str(), reuseSource)); 
+    }
+    else{
 
-      }
     }
   }
   //mp4 code end.
   return sms;
 }
 
+//read the encoding information about the file with ffprobe
 int readTrackinfo(const char *cmd, vector<MediaStream>& res)   
 {   
     char buf[1024];   
     char ps[1024]={0};   
     FILE *ptr;   
     strcpy(ps, cmd);   
-    printf("reach here! 000\n");
+    //execute the cmd and read it from the pipe with popen func
     if((ptr=popen(ps, "r"))!=NULL)   
     {   
         while(fgets(buf, 1024, ptr)!=NULL)   
@@ -272,31 +260,51 @@ int readTrackinfo(const char *cmd, vector<MediaStream>& res)
             continue;
           MediaStream ms;
           sub = strstr(buf, "Video: ");
-          if(sub != NULL){
-            ms.streamType = "Video";
+          if(sub != NULL)
+          {
+            ms.streamType = Video;
             sub = sub + strlen("Video: ");
             char* from = sub;
             while(*sub != ' ' && *sub != ',' && *sub != '\0' && *sub != '\n'){
               sub++;
             }
-            ms.format.append(from, sub - from);
+            ms.content.append(from, sub - from);
             res.push_back(ms);
           }
-          else if((sub = strstr(buf, "Audio: ")) != NULL){
-            ms.streamType = "Audio";
+          else if((sub = strstr(buf, "Audio: ")) != NULL)
+          {
+            ms.streamType = Audio;
             sub = sub + strlen("Audio: ");
             char* from = sub;
             while(*sub != ' ' && *sub != ',' && *sub != '\0' && *sub != '\n'){
               sub++;
             }
-            ms.format.append(from, sub - from);
+            ms.content.append(from, sub - from);
+            res.push_back(ms);
+          }
+          else if((sub = strstr(buf, "Subtitle: ")) != NULL)
+          {
+            ms.streamType = Subtitle;
+            fgets(buf, 1024, ptr);
+            fgets(buf, 1024, ptr);
+            sub = strstr(buf, ": ") + strlen(": ");
+            char* from = sub;
+            while(*sub != ' ' && *sub != ',' && *sub != '\0' && *sub != '\n'){
+              sub++;
+            }
+            ms.content.append(from, sub - from);
             res.push_back(ms);
           }
           else
+          {
             continue;
+          }
         }   
         pclose(ptr);   
         ptr = NULL;   
+        if(res.size() == 0){
+          return -2;
+        }
         return 0;
     }   
     else  
@@ -304,3 +312,105 @@ int readTrackinfo(const char *cmd, vector<MediaStream>& res)
         return -1;
     }   
 }  
+
+//extract the media file and compose them with ffmpeg without re-encoding
+int convertMediaWithoutReEncoding(const string srcFile, const string destpath, 
+    const string destFormat, const vector<MediaStream>& res, UsageEnvironment* env)
+{
+  for(std::size_t i = 0; i < res.size(); i++){
+    if(res[i].streamType == Video)
+    {
+      if(res[i].content == "h264")
+      {
+        //firstly, convert the file without re-encoding.
+        const string cmd = string("echo N | ffmpeg") + " -i " + srcFile + \
+            " -acodec copy -vcodec copy -scodec copy -vbsf h264_mp4toannexb " + destpath;
+        pid_t status = system(cmd.c_str());
+        if(WIFEXITED(status) < 0 || WEXITSTATUS(status) < 0){
+          return -1;
+        }
+        //secondly, create a .tsx file
+        if(destFormat == "ts")
+        {
+          createMPEG2TransportStreamIndexer(destpath, env);
+        }
+      }
+      return 0;
+    }
+    /*else if(res[i].streamType == "Audio"){
+      if(res[i].content == "aac"){
+        string vname = string(fileName) + ".aac";
+        const string cmd = string("echo N | ffmpeg") + " -i " + fileName + \
+            " -acodec copy " + vname;
+        system(cmd.c_str());
+        //NEW_SMS("H.264 Video");  
+        sms->addSubsession(ADTSAudioFileServerMediaSubsession::createNew(env, vname.c_str(), reuseSource)); 
+      }
+      else if(res[i].content == "ac3"){
+        string vname = string(fileName) + ".ac3";
+        const string cmd = string("echo N | ffmpeg") + " -i " + fileName + \
+            " -acodec copy " + vname;
+        system(cmd.c_str());
+        // Assumed to be an AC-3 Audio file:
+        //NEW_SMS("AC-3 Audio");
+        sms->addSubsession(AC3AudioFileServerMediaSubsession::createNew(env, vname.c_str(), reuseSource));
+      }
+    }*/
+    else
+    {
+      continue;
+    }
+  }
+  return -1;
+}
+
+void afterPlaying(void* clientData) {
+  puts("...done");
+  char* watchVariable = (char*)clientData;
+  *watchVariable = 1;
+}
+
+int createMPEG2TransportStreamIndexer(const std::string inputFileName,UsageEnvironment* env){
+    // The output file name is the same as the input file name, except with suffix ".tsx":
+  const std::string outputFileName = inputFileName + 'x';
+
+  struct stat _stat;
+  if(lstat(outputFileName.c_str(), &_stat) >=0  && !S_ISDIR(_stat.st_mode)) 
+  {
+    printf("%s already exist.\n", outputFileName.c_str());
+    return 0;
+  }
+
+  // Begin by setting up our usage environment:
+  //TaskScheduler* scheduler = BasicTaskScheduler::createNew();
+  //UsageEnvironment* env = BasicUsageEnvironment::createNew(*scheduler);
+
+  //Open the input file as a "byte stream file source"
+  FramedSource* input
+    = ByteStreamFileSource::createNew(*env, inputFileName.c_str(), TRANSPORT_PACKET_SIZE);
+  if (input == NULL) {
+    *env << "Failed to open input file \"" << inputFileName.c_str() << "\" (does it exist?)\n";
+    return -1;
+  }
+  // Create a filter that indexes the input Transport Stream data:
+  FramedSource* indexer
+    = MPEG2IFrameIndexFromTransportStream::createNew(*env, input);
+
+  // Open the output file (for writing), as a 'file sink':
+  MediaSink* output = FileSink::createNew(*env, outputFileName.c_str());
+  if (output == NULL) {
+    *env << "Failed to open output file \"" << outputFileName.c_str() << "\"\n";
+    return -1;
+  }
+  // Start playing, to generate the output index file:
+  *env << "Writing index file \"" << outputFileName.c_str() << "\"...";
+
+  char watchVariable = 0;
+  output->startPlaying(*indexer, afterPlaying, (void*)&watchVariable);
+
+  //char fWatchValue = 0;
+  env->taskScheduler().doEventLoop(&watchVariable);
+
+  //delete scheduler;
+  return 0;
+}

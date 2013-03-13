@@ -1,4 +1,4 @@
-INCLUDES = -I./include/UsageEnvironment/include -I./include/groupsock/include -I./include/liveMedia/include -I./include/BasicUsageEnvironment/include
+INCLUDES = -I./live/UsageEnvironment/include -I./live/groupsock/include -I./live/liveMedia/include -I./live/BasicUsageEnvironment/include
 #
 ##### Change the following for your environment:
 COMPILE_OPTS =		$(INCLUDES) -I. -O2 -DSOCKLEN_T=socklen_t -D_LARGEFILE_SOURCE=1
@@ -21,24 +21,31 @@ EXE =
 ##### End of variables to change
 src = src
 mediaServerSrc = $(src)/mediaServer
-objFile = obj
+objFile = src
+mediaServerObj = $(mediaServerSrc)
 option = -O2 -lpthread#-fprofile-arcs -ftest-coverage
 
-AP_OBJS = $(objFile)/HomeCommand.o $(objFile)/DynamicRTSPServer.o  $(objFile)/AirPlayerServer.o $(objFile)/main.o $(objFile)/Server.o $(objFile)/Command.o\
+AP_OBJS = $(objFile)/HomeCommand.o $(mediaServerObj)/DynamicRTSPServer.o  $(objFile)/AirPlayerServer.o $(objFile)/main.o $(objFile)/Server.o $(objFile)/Command.o\
 	$(objFile)/LsCommand.o $(objFile)/PlayCommand.o $(objFile)/DescribeCommand.o $(objFile)/CommandFactory.o\
         $(objFile)/Quality.o $(objFile)/Hquality.o $(objFile)/Mquality.o $(objFile)/Lquality.o $(objFile)/ConfigFile.o
 
-all: apserver
+all:livemedia apserver
 
-LIB_Dir = ./lib
+LIVE_DIR = live
 
-USAGE_ENVIRONMENT_LIB = $(LIB_Dir)/libUsageEnvironment.$(LIB_SUFFIX)
-BASIC_USAGE_ENVIRONMENT_LIB = $(LIB_Dir)/libBasicUsageEnvironment.$(LIB_SUFFIX)
-LIVEMEDIA_LIB = $(LIB_Dir)/libliveMedia.$(LIB_SUFFIX)
-GROUPSOCK_LIB = $(LIB_Dir)/libgroupsock.$(LIB_SUFFIX)
+LIB_Dir = $(LIVE_DIR)
+
+USAGE_ENVIRONMENT_LIB = $(LIB_Dir)/UsageEnvironment/libUsageEnvironment.$(LIB_SUFFIX)
+BASIC_USAGE_ENVIRONMENT_LIB = $(LIB_Dir)/BasicUsageEnvironment/libBasicUsageEnvironment.$(LIB_SUFFIX)
+LIVEMEDIA_LIB = $(LIB_Dir)/liveMedia/libliveMedia.$(LIB_SUFFIX)
+GROUPSOCK_LIB = $(LIB_Dir)/groupsock/libgroupsock.$(LIB_SUFFIX)
 LOCAL_LIBS =	$(LIVEMEDIA_LIB) $(GROUPSOCK_LIB) \
 		$(BASIC_USAGE_ENVIRONMENT_LIB) $(USAGE_ENVIRONMENT_LIB)
 LIBS =		$(LOCAL_LIBS) $(LIBS_FOR_CONSOLE_APPLICATION)
+
+
+livemedia:
+	cd $(LIVE_DIR); make
 
 apserver: createDir $(AP_OBJS)
 	g++ $(AP_OBJS) $(LIBS) ${option} -o apserver
@@ -49,8 +56,8 @@ createDir:
 $(objFile)/HomeCommand.o:
 	g++ -c $(src)/HomeCommand.cpp -o $(objFile)/HomeCommand.o $(option)
 
-$(objFile)/DynamicRTSPServer.o:
-	g++ $(INCLUDES) -c $(mediaServerSrc)/DynamicRTSPServer.cpp -o $(objFile)/DynamicRTSPServer.o
+$(mediaServerObj)/DynamicRTSPServer.o:
+	g++ $(INCLUDES) -c $(mediaServerSrc)/DynamicRTSPServer.cpp -o $(mediaServerObj)/DynamicRTSPServer.o
 
 $(objFile)/main.o: 
 	g++ $(INCLUDES) -c $(src)/main.cpp -o $(objFile)/main.o ${option} 
@@ -93,4 +100,5 @@ $(objFile)/ConfigFile.o:
 	
 clean:
 	-rm $(objFile)/*.o
+	cd $(LIVE_DIR); make clean
 

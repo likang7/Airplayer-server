@@ -24,6 +24,19 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 #ifndef _RTSP_SERVER_SUPPORTING_HTTP_STREAMING_HH
 #include "RTSPServerSupportingHTTPStreaming.hh"
 #endif
+#include <string>
+#include <vector>
+
+enum Stream{
+	Video,
+	Audio,
+	Subtitle,
+};
+
+struct MediaStream{
+  Stream streamType;
+  std::string content;
+};
 
 class DynamicRTSPServer: public RTSPServerSupportingHTTPStreaming {
 public:
