@@ -100,5 +100,5 @@ $(objFile)/ConfigFile.o:
 	
 clean:
 	-rm $(objFile)/*.o
-	cd $(LIVE_DIR); make clean
+#	cd $(LIVE_DIR); make clean
 

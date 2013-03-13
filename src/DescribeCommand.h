@@ -19,8 +19,12 @@ class DescribeCommand : public Command
         virtual const char* execute();
         virtual std::string toString();
     private:
-	char* getSomething(char*);
+       int getMediainfo(const std::string fp);
+       int getFileSize(const std::string fp);
     	//request的格式为describe [pathname] 
         const char* request;
+        std::string duration;
+        std::string resolution;
+        std::string filesize;
 };
 #endif

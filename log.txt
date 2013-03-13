@@ -98,3 +98,4 @@
 
 2013-3-4 15:21:47 ERROR cannot get the description of file ./../../../Videos/Who.Framed.Roger.Rabbit.1988.BluRay.iPad.720p.AAC.x264-CHDPAD/Who.Framed.Roger.Rabbit.1988.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4
 
+2013-3-13 19:17:44 bind error

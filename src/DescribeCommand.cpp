@@ -9,6 +9,7 @@
 #include <stdio.h> 
 #include <string.h>
 #include <unistd.h>
+#include <cstring>
 
 //#define DEBUG
 using std::string;
@@ -27,110 +28,116 @@ const char* DescribeCommand::execute()
 {
     if(res != NULL)
         return res->c_str();
-    
-    /*
-     *以下部分需要先解析request，提取出文件路径
-     */
-    char* req = new char[200];
-    char* token;
-    char* resolution;
-    char* duration;
-    char* size;
-    char command[255];
-    char temp[255];
-    int i;
 
-    strcpy(req,request);
-    token=strtok(req," ");
-    if(token == NULL)
-    	return NULL;
-    token=strtok(req," ");
+    const char* fp = request;
     
-    #ifdef DEBUG
-    printf("%s\n",token);
-    #endif
-    
-    if(access(req, R_OK|W_OK))
+    if(access(fp, R_OK|W_OK))
     {
 	#ifdef DEBUG
     	printf("File does not exist!\n");
-    	#endif
-	return NULL;
+    #endif
+	   return NULL;
     }
-    //获取分辨率
-    sprintf(command,"ffmpeg -i %s 2>&1 | grep 'Stream #0:0'|cut -d ',' -f 3 | cut -d '[' -f 1",req);
-   	
-    #ifdef DEBUG
-    printf("%s\n",command);
-    #endif
     
-    resolution = getSomething(command);
-    i = strlen(resolution);
-    resolution[i-1] = '\0';
-    #ifdef DEBUG
-    printf("%s %d\n",resolution,strlen(resolution));
-    #endif
-    
-    //获取视频长度
-    memset(command,'\0',sizeof(command));
-    sprintf(command,"ffmpeg -i %s 2>&1 | grep 'Duration' | cut -d ' ' -f 4 | sed s/,//",req);
-   	
-    #ifdef DEBUG
-    printf("%s\n",command);
-    #endif
-    
-    duration = getSomething(command);
-    token=strtok(duration,".");
-
-    #ifdef DEBUG
-    printf("%s %d\n",duration,strlen(duration));
-    #endif
-    
+    //获取分辨率以及媒体长度
+    getMediainfo(fp);
     //获取文件大小
-    memset(command,'\0',sizeof(command));
-    sprintf(command,"ls -lh %s|cut -d ' ' -f 5",req);
-   	
-    #ifdef DEBUG
-    printf("%s\n",command);
-    #endif
+    getFileSize(fp);
+
+    res = new string;
+    *res = string("resolution:") + resolution + ", duration:" + duration + ", size:" + filesize;
     
-    size = getSomething(command);
-    i = strlen(size);
-    size[i-1] = '\0';
-
-    #ifdef DEBUG
-    printf("%s %d\n",size,strlen(size));
-    #endif
-
-    sprintf(temp,"resolution:%s, duration:%s, size:%s\n",resolution,duration,size);
-    #ifdef DEBUG
-    printf("%s\n",temp);
-    #endif
-
-    res = new string(temp);
-    
-    delete resolution,duration,size,req;
     if(res == NULL)
     	return NULL;
     return res->c_str();
 }
 
-char* DescribeCommand::getSomething(char *command)
-{
-    FILE *stream; 
-    char buf[1024]; 
-    char *p = new char[1024];
-    memset(buf,'\0',sizeof(buf));//初始化buf
-    stream = popen(command,"r"); //将命令的输出 通过管道读取（“r”参数）到FILE* stream
-
-    fread(buf,sizeof(char),sizeof(buf),stream); //将刚刚FILE* stream的数据流读取到buf中
-
-    pclose(stream);
-    strcpy(p,buf);
-    return p;
-}
-
 string DescribeCommand::toString()
 {
 	return string("get the description of file ") + request + "\n";
+}
+
+//read the encoding information about the file with ffprobe
+int DescribeCommand::getMediainfo(const std::string fp)   
+{   
+    char buf[1024];   
+    char ps[1024]={0};   
+    FILE *ptr;   
+    strcpy(ps, (string("ffmpeg -i ") + fp + " 2>&1").c_str());   
+    //execute the cmd and read it from the pipe with popen func
+    if((ptr=popen(ps, "r"))!=NULL)   
+    {   
+        while(fgets(buf, 1024, ptr)!=NULL)   
+        {  
+            char* sub = buf;
+            while(*sub == ' ')
+                sub++; 
+            char* tmp = NULL; ;
+            if((tmp = strstr(sub, "Duration: ")) != NULL){
+                tmp += strlen("Duration: ");
+                const char* from = tmp;
+                while(*tmp != ' ' && *tmp != ',' && *tmp != '\0' \
+                    && *tmp != '\n' && *tmp != '.'){
+                    tmp++;
+                }
+                this->duration.append(from, tmp - from);
+            }
+            else if((tmp = strstr(sub, "Video: ")) != NULL){
+                //ignore the first two token ','
+                while(*tmp++ != ',')
+                    ;
+                //++tmp;
+                while(*tmp++ != ',')
+                    ;
+                //++tmp;
+                while(*tmp == ' ')
+                    tmp++;
+
+                //get the solution information
+                const char* from = tmp;
+                while((*tmp >= '0' && *tmp <= '9') || *tmp == 'x')
+                    tmp++;
+                this->resolution.append(from, tmp - from);
+                #ifdef DEBUG
+                printf("***resolution = %s\n", resolution.c_str());
+                #endif
+            }
+            else
+            {
+                continue;
+            }
+        }   
+        pclose(ptr);   
+        ptr = NULL;   
+        return 0;
+    }   
+    else  
+    {   
+        return -1;
+    }   
+} 
+
+int DescribeCommand::getFileSize(const std::string fp){
+    char buf[1024];   
+    char ps[1024]={0};   
+    FILE *ptr;   
+    strcpy(ps, (string("ls -lh ") + fp + " |cut -d ' ' -f 5").c_str());   
+    //execute the cmd and read it from the pipe with popen func
+    if((ptr=popen(ps, "r"))!=NULL){
+        while(fgets(buf, 1024, ptr)!=NULL)
+            filesize += buf;
+        for(string::iterator it = filesize.end() - 1; it != filesize.begin(); it--){
+            if(*it == '\n' || *it == '\r'){
+                it = filesize.erase(it);
+            }
+            else
+                break;
+        }
+        pclose(ptr);   
+        ptr = NULL;   
+        return 0;
+    }
+    else{
+        return -1;
+    }
 }
