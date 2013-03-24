@@ -99,3 +99,259 @@
 2013-3-4 15:21:47 ERROR cannot get the description of file ./../../../Videos/Who.Framed.Roger.Rabbit.1988.BluRay.iPad.720p.AAC.x264-CHDPAD/Who.Framed.Roger.Rabbit.1988.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4
 
 2013-3-13 19:17:44 bind error
+2013-3-14 1:39:51 ERROR cannot list the directory at ./../../lk/Videos/..
+2013-3-14 1:39:57 ERROR cannot list the directory at ./../../lk/Videos/..
+2013-3-15 11:49:12 ERROR Unknown command : 
+2013-3-15 11:49:19 ERROR cannot list the directory at 
+2013-3-15 12:0:23 ERROR Unknown command : ㅙ드
+2013-3-15 13:16:48 ERROR Unknown command : 
+2013-3-15 13:22:53 ERROR Unknown command : p->heigt
+2013-3-16 0:58:8 ERROR cannot get the preview picture of /home/lk/Videos/0.mp4,resolution:120*60
+
+2013-3-16 11:18:23 ERROR cannot get the preview picture of /home/lk/Videos/0.mp4,resolution:320x240
+
+2013-3-16 11:20:57 ERROR cannot get the preview picture of /home/lk/Videos/0.mp4,resolution:320x240
+
+2013-3-16 11:21:15 ERROR cannot get the preview picture of /home/lk/Videos/0.mp4,resolution:320x240
+
+2013-3-16 11:25:3 ERROR cannot get the preview picture of /home/lk/Videos/0.mp4,resolution:320x240
+
+2013-3-16 11:26:24 ERROR cannot get the preview picture of /home/lk/Videos/0.mp4,resolution:320x240
+
+2013-3-16 11:26:26 ERROR cannot get the preview picture of /home/lk/Videos/0.mp4,resolution:320x240
+
+2013-3-16 11:26:27 ERROR cannot get the preview picture of /home/lk/Videos/0.mp4,resolution:320x240
+
+2013-3-16 11:27:29 ERROR cannot get the preview picture of /home/lk/Videos/0.mp4,resolution:320x240
+
+2013-3-16 11:28:44 ERROR cannot get the preview picture of /home/lk/Videos/0.mp4,resolution:320x240
+
+2013-3-16 11:28:47 ERROR cannot get the preview picture of /home/lk/Videos/0.mp4,resolution:320x240
+
+2013-3-16 11:30:24 ERROR cannot get the preview picture of /home/lk/Videos/0.mp4,resolution:320x240
+
+2013-3-16 11:31:3 ERROR cannot get the preview picture of /home/lk/Videos/0.mp4,resolution:320x240
+
+2013-3-16 12:8:5 ERROR Unknown command : if(!res.empty())
+2013-3-16 12:8:9 ERROR Unknown command : 
+2013-3-16 12:8:9 ERROR Unknown command : 
+2013-3-16 12:8:10 ERROR Unknown command : 
+2013-3-16 12:8:29 ERROR Unknown command : 
+2013-3-16 12:8:29 ERROR Unknown command : 
+2013-3-16 12:8:33 ERROR Unknown command : gjgh
+2013-3-17 17:36:46 ERROR cannot list the directory at .OK.
+2013-3-17 17:36:48 ERROR cannot list the directory at .OK.
+2013-3-17 17:36:50 ERROR cannot list the directory at .OK.
+2013-3-17 17:37:1 ERROR cannot list the directory at .OK.
+2013-3-17 17:39:44 ERROR cannot list the directory at ./home/lk/Videos/
+2013-3-17 17:40:59 ERROR cannot get the description of file null/0.mp4
+
+2013-3-17 17:42:9 ERROR cannot get the description of file null/Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD/../Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD/Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4
+
+2013-3-17 17:59:43 ERROR cannot get the preview picture of /home/lk/Videos//longlongago.mp3,resolution:240x120
+
+2013-3-17 18:8:25 ERROR cannot get the preview picture of /home/lk/Videos//longlongago.mp3,resolution:240x120
+
+2013-3-17 22:9:21 ERROR cannot get the preview picture of /home/lk/Videos//Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD/../longlongago.mp3,resolution:240x120
+
+2013-3-17 22:13:15 ERROR cannot get the preview picture of /home/lk/Videos//longlongago.mp3,resolution:240x120
+
+2013-3-17 22:13:57 ERROR cannot get the preview picture of /home/lk/Videos//longlongago.mp3,resolution:240x120
+
+2013-3-19 9:54:5 getLocalP: ioctl error
+2013-3-19 10:24:22 ERROR cannot get the preview picture of /home/lk/Videos//longlongago.mp3,resolution:240x120
+
+2013-3-19 11:30:44 ERROR cannot list the directory at /home/lk/Videos//到 Videos 的链接
+2013-3-19 11:31:22 ERROR cannot list the directory at /home/lk/Videos//到 Videos 的链接
+2013-3-19 11:32:48 ERROR cannot list the directory at /home/lk/Videos//到 Videos 的链接
+2013-3-19 11:32:52 ERROR cannot list the directory at /home/lk/Videos//到Videos的链接
+2013-3-19 11:34:45 ERROR cannot list the directory at /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv
+2013-3-19 11:34:54 ERROR cannot list the directory at /home/lk/Videos//到Videos的链接/Xiu.XiuThe.Sent.Down.Girl.1998.SUBBED.DVDRiP.XviD-WRD.avi
+2013-3-19 11:35:4 ERROR cannot list the directory at /home/lk/Videos//到Videos的链接/Desert.Flower.2009.沙漠之花.双语字幕.HR-HDTV.AC3.1024x554.x264-人人影视制作.mkv.ts
+2013-3-19 11:35:32 ERROR cannot list the directory at /home/lk/Videos//到Videos的链接/LES_MISERABLES-2013EDAW DVDSRNR.avi
+2013-3-19 11:35:48 ERROR cannot list the directory at /home/lk/Videos//到Videos的链接/Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD/Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4
+2013-3-19 11:38:34 ERROR cannot get the preview picture of /home/lk/Videos//../Videos/到Videos的链接/Betty.Blue.1986.BluRay.720p.AC3.x264-CHD/Betty.Blue.1986.BluRay.720p.AC3.x264-CHD.chs.srt,resolution:240x120
+
+2013-3-19 11:44:55 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv,resolution:240x120
+
+2013-3-19 11:45:7 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/../MV/Adele.Live.At.The.Royal.Albert.Hall.2011.1080p.BluRay.DTS.x264.mkv,resolution:240x120
+
+2013-3-19 11:45:15 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/../MV/Taylor.Swift.-.[You.Belong.With.Me].MV.(1080i).ts,resolution:240x120
+
+2013-3-19 11:45:22 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/../MV/Sparks Fly.mp4,resolution:240x120
+
+2013-3-19 11:45:31 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/../MV/Sparks Fly.mp4,resolution:240x120
+
+2013-3-19 11:45:37 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/../MV/Adele.Live.At.The.Royal.Albert.Hall.2011.1080p.BluRay.DTS.x264.mkv,resolution:240x120
+
+2013-3-19 11:46:10 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv,resolution:240x120
+
+2013-3-19 11:46:18 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/MV/Sparks Fly.mp4,resolution:240x120
+
+2013-3-19 17:36:23 ERROR cannot get the preview picture of /home/lk/Videos//0.mp4,resolution:240x120
+
+2013-3-19 17:36:27 ERROR cannot get the preview picture of /home/lk/Videos//0.mp4,resolution:240x120
+
+2013-3-19 17:36:31 ERROR cannot get the preview picture of /home/lk/Videos//1.mp4,resolution:240x120
+
+2013-3-19 19:34:22 ERROR cannot get the preview picture of /home/lk/Videos//../Videos/布达佩斯之恋/[布达佩斯之恋].Gloomy.Sunday.1999.XviD.AC3-WAF.mkv,resolution:240x120
+
+2013-3-19 19:34:26 ERROR cannot get the preview picture of /home/lk/Videos//../Videos/布达佩斯之恋/[布达佩斯之恋].Gloomy.Sunday.1999.XviD.AC3-WAF.mkv,resolution:240x120
+
+2013-3-19 19:34:30 ERROR cannot get the preview picture of /home/lk/Videos//../Videos/3.mp4.ts,resolution:240x120
+
+2013-3-19 19:34:33 ERROR cannot get the preview picture of /home/lk/Videos//../Videos/0.mp4___LOW.ts,resolution:240x120
+
+2013-3-19 20:0:7 ERROR cannot get the preview picture of /home/lk/Videos//布达佩斯之恋/[布达佩斯之恋].Gloomy.Sunday.1999.XviD.AC3-WAF.CHS.srt,resolution:240x120
+
+2013-3-19 20:14:24 ERROR cannot get the description of file /home/lk/Videos//paperman.2012.720p.bluray.dts.x264-publichd.mkv
+
+2013-3-20 10:48:47 getLocalP: ioctl error
+2013-3-20 10:49:4 getLocalP: ioctl error
+2013-3-20 18:57:46 ERROR cannot get the preview picture of /home/lk/Videos/布达佩斯之恋/[布达佩斯之恋].Gloomy.Sunday.1999.XviD.AC3-WAF.mkv.ts,resolution:240x120
+
+2013-3-20 18:57:56 ERROR cannot get the preview picture of /home/lk/Videos/布达佩斯之恋/[布达佩斯之恋].Gloomy.Sunday.1999.XviD.AC3-WAF.mkv,resolution:240x120
+
+2013-3-20 18:58:24 ERROR cannot get the description of file /home/lk/Videos/布达佩斯之恋/[布达佩斯之恋].Gloomy.Sunday.1999.XviD.AC3-WAF.mkv
+
+2013-3-21 13:39:43 ERROR Unknown command : getsubtitles
+2013-3-21 13:40:23 ERROR Unknown command : 
+2013-3-21 13:40:24 ERROR Unknown command : 
+2013-3-21 13:40:24 ERROR Unknown command : 
+2013-3-21 13:40:25 ERROR Unknown command : 
+2013-3-21 13:40:25 ERROR Unknown command : 
+2013-3-21 13:40:25 ERROR Unknown command : 
+2013-3-21 13:40:25 ERROR Unknown command : 
+2013-3-21 13:40:25 ERROR Unknown command : 
+2013-3-21 13:40:26 ERROR Unknown command : 
+2013-3-21 13:40:26 ERROR Unknown command : 
+2013-3-21 13:41:50 ERROR cannot get the subtitle files at /home/lk/Videos/0.mp4
+2013-3-21 13:43:6 ERROR cannot get the subtitle files at /home/lk/Videos/0.mp4
+2013-3-21 15:6:56 ERROR Unknown command : download
+2013-3-21 15:8:51 ERROR Unknown command : down
+2013-3-21 15:9:5 ERROR Unknown command : 
+2013-3-21 15:9:6 ERROR Unknown command : 
+2013-3-21 15:10:27 ERROR Unknown command : down
+2013-3-21 15:10:37 ERROR Unknown command : 
+2013-3-21 15:10:51 ERROR Unknown command : 
+2013-3-21 16:45:55 bind error
+2013-3-21 16:59:31 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/Seen/FateZero/Fate Zero(S01)/[SumiSora&MAGI_ATELIER&CASO][Fate_Zero][01][x264_aac](FC41A36B).mkv,resolution:240x120
+
+2013-3-21 17:0:0 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/Seen/FateZero/Fate Zero(S02)/[Speed][Fate_Zero][14][GB_BIG5][HDTV][1280x720].mkv,resolution:240x120
+
+2013-3-21 17:0:24 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/Seen/Before.Sunset.2004.HDTV.720p.x264.DD5.1-BoK[日落之前]/Before Sunset x264 720p L4.1 AC3 5.1-BoK.mkv,resolution:240x120
+
+2013-3-21 17:45:5 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/婚姻生活Scenes.from.a.Marriage.1973.D9.MiniSD-TLF.(ED2000.COM).mkv,resolution:240x120
+
+2013-3-22 11:31:19 ERROR cannot get the preview picture of /home/lk/Videos/longlongago.mp3,resolution:240x120
+
+2013-3-22 11:52:28 ERROR cannot get the preview picture of /home/lk/Videos/到Videos的链接/MV/Sparks Fly.mp4,resolution:240x135
+
+2013-3-22 11:53:10 ERROR cannot get the preview picture of /home/lk/Videos/到Videos的链接/幽灵公主(修正版).1997.中英字幕￡CMCT南山石/[幽灵公主(国英日三语)].Princess.Mononoke.1997.HDTV.720p.x264.AC3.3Audios-CMCT.mkv,resolution:240x135
+
+2013-3-22 12:26:26 ERROR cannot list the directory at /home/lk/Videos/0.mp4.tsx
+2013-3-22 14:1:21 ERROR cannot list the directory at /home/lk/Videos/0.mp4
+2013-3-22 19:57:10 ERROR cannot get the subtitle files at /home/lk/Videos/0.mp4
+2013-3-22 20:0:46 ERROR cannot get the subtitle files at /home/lk/Videos/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.ts
+2013-3-22 22:9:11 ERROR cannot get the subtitle files at /home/lk/Videos/0.mp4
+2013-3-22 22:9:43 ERROR cannot get the subtitle files at /home/lk/Videos/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.ts
+2013-3-22 22:9:53 ERROR cannot get the subtitle files at /home/lk/Videos/0.mp4
+2013-3-22 22:10:2 ERROR cannot get the subtitle files at /home/lk/Videos/All.Around.Us.2008.DVDRip.XviD-MoST.avi
+2013-3-22 22:10:10 ERROR cannot get the subtitle files at /home/lk/Videos/All.Around.Us.2008.DVDRip.XviD-MoST.avi
+2013-3-22 22:10:30 ERROR cannot get the subtitle files at /home/lk/Videos/到Videos的链接/Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD/Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4
+2013-3-22 22:19:44 ERROR cannot get the subtitle files at /home/lk/Videos/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.ts
+2013-3-22 22:47:40 ERROR cannot get the subtitle files at /home/lk/Videos/0.mp4
+2013-3-22 22:51:13 ERROR cannot get the subtitle files at /home/lk/Videos/0.mp4
+2013-3-22 22:51:26 ERROR cannot get the subtitle files at /home/lk/Videos/0.mp4
+2013-3-23 0:5:8 ERROR cannot get the preview picture of /home/lk/Videos/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.cht.srt,resolution:256x144
+
+2013-3-23 11:2:20 ERROR cannot get the subtitle files at /home/lk/Videos//0.mp4.___DIRECT.ts
+2013-3-23 11:3:55 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:19:57 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:20:15 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:20:17 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:21:48 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:23:39 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:25:20 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:26:37 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:37:46 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:39:49 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:39:54 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:40:28 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:40:31 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:40:59 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:41:24 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:41:38 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:41:53 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:41:55 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:47:47 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 11:49:51 ERROR cannot get the subtitle files at /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.mkv.___DIRECT.ts
+2013-3-23 12:2:1 ERROR cannot get the subtitle files at /home/lk/Videos//到Videos的链接/MV/Sparks Fly.mp4
+2013-3-23 12:2:2 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/MV/Sparks Fly.mp4,resolution:240x135
+
+2013-3-23 12:3:16 ERROR cannot get the subtitle files at /home/lk/Videos//到Videos的链接/MV/Taylor.Swift.-.[You.Belong.With.Me].MV.(1080i).ts
+2013-3-23 12:3:16 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/MV/Taylor.Swift.-.[You.Belong.With.Me].MV.(1080i).ts,resolution:240x135
+
+2013-3-23 12:4:17 ERROR cannot get the subtitle files at /home/lk/Videos//Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD/Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4
+2013-3-23 12:4:40 ERROR cannot get the subtitle files at /home/lk/Videos//0.mp4
+2013-3-23 12:4:54 ERROR cannot get the subtitle files at /home/lk/Videos//到Videos的链接/Amour.2012.FRENCH.720p.BluRay.x264-ROUGH/amour.2012.french.720p.bluray.x264-rough.mkv
+2013-3-23 12:5:3 ERROR cannot get the subtitle files at /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv
+2013-3-23 12:5:3 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv,resolution:240x135
+
+2013-3-23 12:12:28 ERROR cannot get the subtitle files at /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv
+2013-3-23 12:12:33 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv,resolution:240x135
+
+2013-3-23 12:14:24 ERROR cannot get the subtitle files at /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv
+2013-3-23 12:14:28 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv,resolution:240x135
+
+2013-3-23 12:14:55 ERROR cannot get the subtitle files at /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv
+2013-3-23 12:15:22 ERROR cannot get the subtitle files at /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv
+2013-3-23 12:16:3 ERROR cannot get the subtitle files at /home/lk/Videos//0.mp4
+2013-3-23 12:16:40 ERROR cannot get the subtitle files at /home/lk/Videos//0.mp4
+2013-3-23 12:16:46 ERROR cannot get the subtitle files at /home/lk/Videos//0.mp4
+2013-3-23 12:17:30 ERROR cannot get the subtitle files at /home/lk/Videos//0.mp4
+2013-3-23 12:17:37 ERROR cannot get the subtitle files at /home/lk/Videos//0.mp4
+2013-3-23 12:18:33 ERROR cannot get the subtitle files at /home/lk/Videos//0.mp4
+2013-3-23 12:18:44 ERROR cannot get the subtitle files at /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv
+2013-3-23 12:18:48 ERROR cannot get the subtitle files at /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv
+2013-3-23 12:18:54 ERROR cannot get the subtitle files at /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv
+2013-3-23 12:18:56 ERROR cannot get the subtitle files at /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv
+2013-3-23 12:18:58 ERROR cannot get the subtitle files at /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv
+2013-3-23 12:19:0 ERROR cannot get the subtitle files at /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv
+2013-3-23 12:19:2 ERROR cannot get the subtitle files at /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv
+2013-3-23 15:18:23 ERROR cannot get the subtitle files at /home/lk/Videos//0.mp4
+2013-3-23 15:19:25 ERROR cannot get the subtitle files at /home/lk/Videos//0.mp4
+2013-3-23 15:19:27 ERROR cannot get the subtitle files at /home/lk/Videos//0.mp4
+2013-3-23 15:31:35 ERROR cannot get the subtitle files at /home/lk/Videos//0.mp4
+2013-3-23 15:32:31 ERROR cannot get the subtitle files at /home/lk/Videos//0.mp4
+2013-3-23 15:32:34 ERROR cannot get the subtitle files at /home/lk/Videos//0.mp4
+2013-3-23 15:38:20 ERROR cannot get the subtitle files at /home/lk/Videos//0.mp4
+2013-3-23 15:41:11 converting video /home/lk/Videos//0.mp4.___HIGH.ts
+2013-3-23 15:41:25 converting video /home/lk/Videos//0.mp4.___MEDIUM.ts
+2013-3-23 15:42:37 converting video /home/lk/Videos//0.mp4.___HIGH.ts
+2013-3-23 15:43:1 converting video /home/lk/Videos//0.mp4.___LOW.ts
+2013-3-23 15:44:5 converting video /home/lk/Videos//0.mp4.___LOW.ts
+2013-3-23 15:44:58 converting video /home/lk/Videos//0.mp4.___LOW.ts
+2013-3-23 15:51:5 converting video /home/lk/Videos//0.mp4.___LOW.ts
+2013-3-23 15:51:23 converting video /home/lk/Videos//0.mp4.___MEDIUM.ts
+2013-3-23 15:51:52 converting video /home/lk/Videos//0.mp4.___MEDIUM.ts
+2013-3-23 16:6:10 converting video /home/lk/Videos//0.mp4.___MEDIUM.ts
+2013-3-23 16:6:10 finished converting video /home/lk/Videos//0.mp4.___MEDIUM.ts
+2013-3-23 16:11:9 converting video /home/lk/Videos//0.mp4.___MEDIUM.ts
+2013-3-23 16:11:9 finished converting video /home/lk/Videos//0.mp4.___MEDIUM.ts
+2013-3-23 16:12:45 converting video /home/lk/Videos//0.mp4.___MEDIUM.ts
+2013-3-23 16:12:45 finished converting video /home/lk/Videos//0.mp4.___MEDIUM.ts
+2013-3-23 16:14:9 converting video /home/lk/Videos//0.mp4.___LOW.ts
+2013-3-23 16:16:15 finished converting video /home/lk/Videos//0.mp4.___LOW.ts
+2013-3-23 16:16:27 converting video /home/lk/Videos//0.mp4.___LOW.ts
+2013-3-23 16:21:46 finished converting video /home/lk/Videos//0.mp4.___LOW.ts
+2013-3-23 16:22:55 converting video /home/lk/Videos//0.mp4.___LOW.ts
+2013-3-23 16:22:55 finished converting video /home/lk/Videos//0.mp4.___LOW.ts
+2013-3-23 16:26:58 converting video /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv.___LOW.ts
+2013-3-23 16:27:31 finished converting video /home/lk/Videos//到Videos的链接/Devils on the Doorstep 2000 720P AC3 H264-AHD/Devils on the Doorstep 2000 720P AC3 H264.mkv.___LOW.ts
+2013-3-23 17:24:28 converting video /home/lk/Videos//All.Around.Us.2008.DVDRip.XviD-MoST.avi.___HIGH.ts
+2013-3-23 17:29:38 ERROR cannot list the directory at null
+2013-3-23 17:39:30 finished converting video /home/lk/Videos//All.Around.Us.2008.DVDRip.XviD-MoST.avi.___HIGH.ts
+2013-3-23 17:39:58 ERROR cannot list the directory at null
+2013-3-23 18:2:42 ERROR cannot get the preview picture of /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.cht.srt,resolution:256x144
+

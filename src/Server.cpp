@@ -12,6 +12,7 @@
 #include <signal.h>
 #include <dirent.h>
 #include <net/if.h>
+#include <unistd.h>
 
 
 using namespace std;

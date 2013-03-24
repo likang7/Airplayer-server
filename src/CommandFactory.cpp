@@ -2,6 +2,10 @@
 #include "LsCommand.h"
 #include "PlayCommand.h"
 #include "DescribeCommand.h"
+#include "HomeCommand.h"
+#include "PreviewCommand.h"
+#include "GetSubtitlesCommand.h"
+#include "DownloadCommand.h"
 #include <stdio.h>
 using std::string;
 
@@ -12,7 +16,7 @@ using std::string;
  *失败返回NULL
  *注意获取实例者有释放内存的责任
  */
-Command* CommandFactory::create(const string type, const char* request)
+Command* CommandFactory::create(const string type, const char* request, int clfd)
 {
 	Command* command = NULL;
 	if(type == "ls"){
@@ -23,6 +27,18 @@ Command* CommandFactory::create(const string type, const char* request)
 	}
 	else if(type == "describe"){
 		command = new DescribeCommand(request);
+	}
+	else if(type == "home"){
+		command = new HomeCommand();
+	}
+	else if(type == "preview"){
+		command = new PreviewCommand(request, clfd);
+	}
+	else if(type == "getsubtitles"){
+		command = new GetSubtitlesCommand(request);
+	}
+	else if(type == "download"){
+		command = new DownloadCommand(request, clfd);
 	}
 	else{
 		command = NULL;

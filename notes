@@ -1,0 +1,53 @@
+sysctl net.core.rmem_max = the_maximum_buffer_size_that_you_need
+
+high:
+ffmpeg -i INPUT -vcodec libx264 -preset medium -threads 2 -acodec copy -scodec copy INPUT_H.ts
+
+medium:
+ffmpeg -i INPUT -vcodec libx264 -preset fast -threads 2 -acodec aac -strict erperimental 320k -scodec copy -s w*h INPUT_M.ts
+
+low:
+ffmpeg -i INPUT -vcodec libx264 -crf 29 -preset ultrafast -tune fastdecodec -threads 2 -acodec aac -strict erperimental 192k -s w*h -scodec copy INPUT_L.ts
+
+MatroskaFileParser.cpp 1131
+Boolean MatroskaFileParser::parseEBMLVal_float(EBMLDataSize& size, float& result) {
+/*
+  unsigned resultAsUnsigned;
+  if (!parseEBMLVal_unsigned(size, resultAsUnsigned)) return False;
+
+  if (sizeof result != sizeof resultAsUnsigned) return False;
+  memcpy(&result, &resultAsUnsigned, sizeof result);
+  return True;
+*/
+    printf("size.val() = %d\n", size.val());
+    if(size.val() <= 4){
+        unsigned resultAsUnsigned;
+        if(!parseEBMLVal_unsigned(size, resultAsUnsigned))
+            return false;
+        if(sizeof result != sizeof resultAsUnsigned)
+            return false;
+        memcpy(&result, &resultAsUnsigned, sizeof result);
+        return true;
+    }
+    else if(size.val() <= 8){
+        u_int64_t resultAsUnsigned64;
+        if(!parseEBMLVal_unsigned64(size, resultAsUnsigned64))
+            return false;
+        //if(sizeof result != sizeof resultAsUnsigned64)
+         //   return false;
+        memcpy(&result, &resultAsUnsigned64, sizeof result);
+        return true;
+    }
+    else
+        return false;
+}
+
+Todo List:
+Client：
+	转码完毕后提示
+	
+Server：
+	避免ffmpeg同时转换同一个文件 ----- ok，3/23
+	转换结束后生成tsx文件 ----- remove the old tsx.，3/23
+	mkv enhancement
+	隐藏非媒体文件，不传输给用户

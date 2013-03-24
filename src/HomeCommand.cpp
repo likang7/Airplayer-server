@@ -10,21 +10,19 @@ HomeCommand::HomeCommand(const char* _path) :
 
 HomeCommand::~HomeCommand()
 {
-	delete res;
-	res = NULL;
+
 }
 
-const char* HomeCommand::execute()
+void HomeCommand::execute(std::string& res)
 {
 	//1. 如果曾经执行过该命令，直接返回结果
-    if(res != NULL)
-        return res->c_str();
+    if(!res.empty())
+        return ;
         
-    res = new string();
     AirPlayerServer* server = AirPlayerServer::getInstance();
-    *res = server->getContent_dir();
+    res = server->getContent_dir();
     
-    return res->c_str();
+    return ;
 }
 
 string HomeCommand::toString()

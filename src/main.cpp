@@ -8,18 +8,24 @@
 #include <cstdlib>
 #include <cstring>
 #include <pthread.h>
+#include <string>
 using std::cout;
 using std::endl;
+using std::string;
 
 
 #define linux 1
 
 //airplayerServer的端口号
 int portNum = 8188;
+
 int rtspServerPortNum = 8554;
 
-//ffserver的路径
-char* pathFFserver = (char*)"./ffserver";
+//ffmpeg的路径
+char* pathFFMPEG = (char*)"/home/lk/ffmpeg";
+
+//content path
+char* cp = (char*)".";
 
 /*
  * 开启ffserver服务器
@@ -100,13 +106,13 @@ void printHelp()
     cout << "=====================  help  ===================" << "\n"
          << "usage: ./apserver \"portNumber\" \"pathname\"" << "\n"
          << "portNumber : the port number of airPlayerServer" << "\n"
-         << "pathname : the path of ffserver" << "\n"
-         << "default : ./apserver 8188 ./ffserver" << "\n"
+         << "pathname : the path of ffmpeg" << "\n"
+         << "default : ./apserver 8188 ./ffmpeg" << "\n"
          << "================================================" << endl;
 }
 
 /*
- * 初始化端口号以及ffserver路径
+ * 初始化端口号以及ffmpeg路径
  */
 void init(int argv, char* args[]){
     if(argv > 1)
@@ -118,20 +124,25 @@ void init(int argv, char* args[]){
             exit(0);
         }
         else
-        {//设置端口号
-            portNum = atoi(args[1]);
-            if(portNum <= 1023)
-            {
-                cout << "ERROR: invalid portNum : " << args[1] << endl;
-                exit(1);
-            }
+        {
+            cp = args[1];
         }
     }
 
-    //设置ffserver的路径
-    if(argv > 2)
+    if(argv > 2){
+        //设置端口号
+        portNum = atoi(args[2]);
+        if(portNum <= 1023)
+        {
+            cout << "ERROR: invalid portNum : " << args[1] << endl;
+            exit(1);
+        }
+    }
+
+    //设置ffmpeg的路径
+    if(argv > 3)
     {
-        pathFFserver = args[2];
+        pathFFMPEG = args[3];
     }
 }
 
@@ -142,16 +153,17 @@ int main(int argv, char* args[])
     
     bool status1, status2;
     //启动ffserver
-    status1 = openffserver(pathFFserver);
+    //status1 = openffserver(pathFFserver);
     status2 = openmediaserver();
     if(status2 == false){
         cout << "fail to create live555MediaServer" << endl;
         return -1;
     }
     //启动AirPlayerServer
-    AirPlayerServer* server = AirPlayerServer::getInstance(portNum);
+    AirPlayerServer* server = AirPlayerServer::getInstance();
+    server->setPort(portNum);
+    server->setContent_dir(cp);
     server->run();
 
     return 0;
 }
-

@@ -6,19 +6,20 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <netdb.h>
+#include <string.h>
 
 #define PORT        8188		/* port number as an integer */
 #define IP_ADDRESS "127.0.0.1"	/* IP address as a string */
 
 #define BUFSIZE 8196
 
-pexit(char * msg)
+void pexit(char * msg)
 {
 	perror(msg);
 	exit(1);
 }
 
-main()
+int main()
 {
     int i,sockfd;
     char buffer[BUFSIZE];
@@ -44,8 +45,24 @@ main()
 		/* note second space is a delimiter and important */
 
 		/* this displays the raw HTML file as received by the browser */
-		while( (i=read(sockfd,buffer,BUFSIZE)) > 0)
-			write(1,buffer,i);
+        int ok = 0;
+        if(strncmp(cmd, "preview", 7) == 0){
+            FILE* f = fopen("test.jpg", "w");
+            while((i = read(sockfd, buffer, BUFSIZE)) > 0)
+                fwrite(buffer, i, sizeof(char), f);
+            fclose(f);
+        }
+        else if(strncmp(cmd, "download", 8) == 0){
+            FILE* f = fopen("test.srt", "w");
+            while((i = read(sockfd, buffer, BUFSIZE)) > 0)
+                fwrite(buffer, i, sizeof(char), f);
+            fclose(f);
+        }
+        else{
+            while((i = read(sockfd, buffer, BUFSIZE)) > 0)
+                write(1, buffer, i);
+        }
 		close(sockfd);
 	}
+    return 0;
 }

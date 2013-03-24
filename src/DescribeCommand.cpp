@@ -13,6 +13,7 @@
 
 //#define DEBUG
 using std::string;
+extern char* pathFFMPEG;
 
 DescribeCommand::DescribeCommand(const char* _request) :
     request(_request)
@@ -24,10 +25,10 @@ DescribeCommand::DescribeCommand(const char* _request) :
  *execute后返回一个视频文件的相关属性
  *如果无法获得属性，返回NULL
  */
-const char* DescribeCommand::execute()
+void DescribeCommand::execute(std::string& res)
 {
-    if(res != NULL)
-        return res->c_str();
+    if(!res.empty())
+        return ;
 
     const char* fp = request;
     
@@ -36,7 +37,7 @@ const char* DescribeCommand::execute()
 	#ifdef DEBUG
     	printf("File does not exist!\n");
     #endif
-	   return NULL;
+	   return ;
     }
     
     //获取分辨率以及媒体长度
@@ -44,12 +45,10 @@ const char* DescribeCommand::execute()
     //获取文件大小
     getFileSize(fp);
 
-    res = new string;
-    *res = string("resolution:") + resolution + ", duration:" + duration + ", size:" + filesize;
+
+    res = string("resolution:") + resolution + ", duration:" + duration + ", size:" + filesize;
     
-    if(res == NULL)
-    	return NULL;
-    return res->c_str();
+    return ;
 }
 
 string DescribeCommand::toString()
@@ -63,7 +62,7 @@ int DescribeCommand::getMediainfo(const std::string fp)
     char buf[1024];   
     char ps[1024]={0};   
     FILE *ptr;   
-    strcpy(ps, (string("ffmpeg -i ") + fp + " 2>&1").c_str());   
+    strcpy(ps, (string(pathFFMPEG) + "/ffmpeg -i \"" + fp + "\" 2>&1").c_str());   
     //execute the cmd and read it from the pipe with popen func
     if((ptr=popen(ps, "r"))!=NULL)   
     {   
@@ -86,10 +85,8 @@ int DescribeCommand::getMediainfo(const std::string fp)
                 //ignore the first two token ','
                 while(*tmp++ != ',')
                     ;
-                //++tmp;
                 while(*tmp++ != ',')
                     ;
-                //++tmp;
                 while(*tmp == ' ')
                     tmp++;
 
@@ -121,7 +118,7 @@ int DescribeCommand::getFileSize(const std::string fp){
     char buf[1024];   
     char ps[1024]={0};   
     FILE *ptr;   
-    strcpy(ps, (string("ls -lh ") + fp + " |cut -d ' ' -f 5").c_str());   
+    strcpy(ps, (string("ls -lh \"") + fp + "\" |cut -d ' ' -f 5").c_str());   
     //execute the cmd and read it from the pipe with popen func
     if((ptr=popen(ps, "r"))!=NULL){
         while(fgets(buf, 1024, ptr)!=NULL)

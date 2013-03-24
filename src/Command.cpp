@@ -1,12 +1,11 @@
 #include "Command.h"
 
-Command::Command() :
-    res(NULL)
+Command::Command() 
 {
 
 }
 
 Command::~Command()
 {
-    delete res;
+
 }

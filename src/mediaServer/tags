@@ -1,0 +1,28 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Audio	DynamicRTSPServer.h	/^	Audio,$/;"	e	enum:Stream
+DynamicRTSPServer	DynamicRTSPServer.cpp	/^DynamicRTSPServer::DynamicRTSPServer(UsageEnvironment& env, int ourSocket,$/;"	f	class:DynamicRTSPServer
+DynamicRTSPServer	DynamicRTSPServer.h	/^class DynamicRTSPServer: public RTSPServerSupportingHTTPStreaming {$/;"	c
+MediaStream	DynamicRTSPServer.h	/^struct MediaStream{$/;"	s
+NEW_SMS	DynamicRTSPServer.cpp	101;"	d	file:
+Stream	DynamicRTSPServer.h	/^enum Stream{$/;"	g
+Subtitle	DynamicRTSPServer.h	/^	Subtitle,$/;"	e	enum:Stream
+Video	DynamicRTSPServer.h	/^	Video,$/;"	e	enum:Stream
+_DYNAMIC_RTSP_SERVER_HH	DynamicRTSPServer.h	22;"	d
+afterPlaying	DynamicRTSPServer.cpp	/^void afterPlaying(void* clientData) {$/;"	f
+content	DynamicRTSPServer.h	/^  std::string content;$/;"	m	struct:MediaStream
+convertMediaWithoutReEncoding	DynamicRTSPServer.cpp	/^int convertMediaWithoutReEncoding(const string srcFile, const string destpath, $/;"	f
+createMPEG2TransportStreamIndexer	DynamicRTSPServer.cpp	/^int createMPEG2TransportStreamIndexer(const std::string inputFileName,UsageEnvironment* env){$/;"	f
+createNew	DynamicRTSPServer.cpp	/^DynamicRTSPServer::createNew(UsageEnvironment& env, Port ourPort,$/;"	f	class:DynamicRTSPServer
+createNewSMS	DynamicRTSPServer.cpp	/^static ServerMediaSession* createNewSMS(UsageEnvironment& env,$/;"	f	file:
+demux	DynamicRTSPServer.cpp	/^static MatroskaFileServerDemux* demux;$/;"	v	file:
+lookupServerMediaSession	DynamicRTSPServer.cpp	/^DynamicRTSPServer::lookupServerMediaSession(char const* streamName) {$/;"	f	class:DynamicRTSPServer
+newMatroskaDemuxWatchVariable	DynamicRTSPServer.cpp	/^static char newMatroskaDemuxWatchVariable;$/;"	v	file:
+onMatroskaDemuxCreation	DynamicRTSPServer.cpp	/^static void onMatroskaDemuxCreation(MatroskaFileServerDemux* newDemux, void* \/*clientData*\/) {$/;"	f	file:
+readTrackinfo	DynamicRTSPServer.cpp	/^int readTrackinfo(const char *cmd, vector<MediaStream>& res)   $/;"	f
+streamType	DynamicRTSPServer.h	/^  Stream streamType;$/;"	m	struct:MediaStream
+~DynamicRTSPServer	DynamicRTSPServer.cpp	/^DynamicRTSPServer::~DynamicRTSPServer() {$/;"	f	class:DynamicRTSPServer

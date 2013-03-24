@@ -1,227 +1,278 @@
 #include "PlayCommand.h"
 #include "AirPlayerServer.h"
-#include "ConfigFile.h"
 #include <cstdio>
 #include <cstring>
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>  
-#include <fcntl.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <dirent.h>
+#include <sstream>
+#include <pthread.h>
+#include <cstdlib>
+#include <unistd.h>
 
 using namespace std;
-//using std::string;
-#define BUFFER_SIZE 255 
-#define REQUEST_FIFO "/tmp/request_fifo" 
-//#define DEBUG
+const int BLOCKSIZE = 16;
+extern int rtspServerPortNum;
+extern char* pathFFMPEG;
+extern int getMediainfo(const std::string& fp, MediaInfo& media); 
 
-int getline_from_fifo(int fd_read,char* str, int n)
-{
-    int index=0;
-    char ch; 
-    #ifdef DEBUG
-    printf("fuck!");
-    #endif
-    while(index<(n-1))
-    {
-        if(read(fd_read,&ch,1)<=0)
-        {
-            #ifdef DEBUG
-            printf("fuck <0\n");
-            #endif
-            sleep(1);
-            return index;
-        } 
-        if(ch=='\n')
-        {
-            str[index++]='\0';
-            return index;
-        }
-        str[index++]=ch;
-        #ifdef DEBUG
-        printf("%c",ch);
-        #endif
-    }
-    str[index++]='\0';
-    #ifdef DEBUG
-    printf("fuck end\n");
-    #endif
-    return index;
-}
+//#define DEBUG
 
 //request的格式为filepath, 转码请求(如quality:xxx, fps:xxx)
 PlayCommand::PlayCommand(const char* _request) :
     request(_request)
 {
+    media.duration = "00:00:00";
+    media.fp.clear();
+    media.height = 480;
+    media.width = 800;
+}
 
+void setQuality(const char* q, Property* p)
+{
+    if(strcmp(q, "high") == 0){
+        p->qual = HIGH;
+    }
+    else if(strcmp(q, "medium") == 0){
+        p->qual = MEDIUM;
+    }
+    else if(strcmp(q, "low") == 0){
+        p->qual = LOW;
+    }
+    else{
+        p->qual = DIRECT;
+    }
+}
+
+//
+void fitDeviceResolution(Property* p, MediaInfo& media){
+    if(media.width <= p->width && media.height <= p->heigt){
+        #ifdef DEBUG
+        printf("condition 1\n");
+        #endif
+        p->width = media.width;
+        p->heigt = media.height;
+    }
+    else if(media.width <= p->width && media.height > p->heigt){
+        if(media.width <= p->heigt && media.height <= p->width){
+            #ifdef DEBUG
+            printf("condition 2\n");
+            #endif
+            p->width = media.width;
+            p->heigt = media.height;
+        }
+        else{
+            #ifdef DEBUG
+            printf("condition 3\n");
+            #endif
+            p->width = 1.0 * media.width * p->heigt / media.height;
+        }
+    }
+    else if(media.width >= p->width && media.height < p->heigt){
+        #ifdef DEBUG
+        printf("condition 4\n");
+        #endif
+        p->heigt = 1.0 * media.height * p->width / media.width;
+    }
+    else{
+        #ifdef DEBUG
+        printf("condition 5\n");
+        #endif
+        float ratio = 1.0 * media.width / media.height;
+        if(ratio > 0.01 && p->width / ratio > p->heigt && \
+            (media.width > p->width && media.height > p->heigt)){
+            p->width = ratio * p->heigt;
+        }
+    }
+    p->width = (p->width / BLOCKSIZE) * BLOCKSIZE;
+    p->heigt = (p->heigt / BLOCKSIZE) * BLOCKSIZE; 
+
+    #ifdef DEBUG
+    printf("width = %d, height = %d\n", p->width, p->heigt);
+    #endif
+}
+
+int PlayCommand::parse(char* str, Property* p){
+    char key[100];
+    char value[100];
+    while(*str){
+        int i;
+        for(i = 0; *str != ':'; i++){
+            key[i] = *str++;
+        }
+        key[i] = '\0';
+        str++;
+        for(i = 0; *str != '\0' && *str != ','; i++){
+            value[i] = *str++;
+        }
+        value[i] = '\0';
+        if(*str != '\0')
+            str++;
+        #ifdef DEBUG
+        printf("key = %s, value = %s\n", key, value);
+        #endif
+        if(strcmp(key, "quality") == 0){
+            setQuality(value, p);
+        }
+        else if(strcmp(key, "resolution") == 0){
+            sscanf(value, "%dx%d", &p->width, &p->heigt);
+            fitDeviceResolution(p, this->media);
+        }
+        else if(strcmp(key, "bitrate") == 0){
+            p->bitRate = value;
+        }
+        else if(strcmp(key, "fps") == 0){
+            p->fps = value;
+        }
+        //str += strlen(key) + strlen(value) + 1;
+        //if(*str == ',')
+            //str++;
+    }
+    return 0;
+}
+
+void* mediaConvert(void *arg)
+{
+    string cmd = *(string*)arg;
+    system(cmd.c_str());
+
+    string fp;
+    if(cmd[cmd.size()-1] == '"')
+    {
+        cmd.erase(cmd.size() - 1);
+        size_t pos = cmd.find_last_of('"');
+        fp = cmd.substr(pos + 1);
+    }
+    else
+        fp = cmd.substr(cmd.find_last_of(' ') + 1);
+
+    remove((fp + "x").c_str());
+    AirPlayerServer* server = AirPlayerServer::getInstance();
+    server->eraseConvertingMedia(fp);
+
+    delete (string*)arg;
+    return (void*)0;
+}
+
+bool PlayCommand::checkRewrite(const std::string& fp)
+{
+    if(access(fp.c_str(), R_OK)){
+        return true;
+    }
+    MediaInfo tmpMedia;
+    getMediainfo(fp, tmpMedia);
+    const string index = fp + "x";
+
+    int hh, mm, ss;
+    sscanf(media.duration.c_str(), "%d:%d:%d", &hh, &mm, &ss);
+    int len1 = hh * 3600 + mm * 60 + ss;
+    sscanf(tmpMedia.duration.c_str(), "%d:%d:%d", &hh, &mm, &ss);
+    int len2 = hh * 3600 + mm * 60 + ss;
+    if(abs(len1 - len2) > 10){
+        remove(index.c_str());
+        return true;
+    } 
+/*
+    getMediainfo(index, tmpMedia);
+    sscanf(tmpMedia.duration.c_str(), "%d:%d:%d", &hh, &mm, &ss);
+    len2 = hh * 3600 + mm * 60 + ss;
+    if(abs(len1 - len2) > 10){
+        remove(index.c_str());
+    }
+*/
+    return false;
 }
 
 /*
  *execute后返回结果为一个可访问的rtsp地址。
  *如果无法获得rtsp地址，返回NULL
  */
-const char* PlayCommand::execute()
+void PlayCommand::execute(std::string& res)
 {
-    if(res != NULL)
-        return res->c_str();
-
+    if(!res.empty())
+        return ;
     /*
-     *以下部分需要先解析request，提取出文件路径和编码请求
-     *设置好ffserver的配置文件后返回rtsp地址
+     *先解析request，提取出文件路径和编码请求
+     *返回rtsp地址
      */
-    char* req = new char[200];
-    char* temp;
+    char* buf = strchr((char*)request, ',');
+    media.fp.append(request, buf - request);
+    getMediainfo(media.fp, media);
 
-    string confFile;
-    ConfigFile *configFile;
-    pid_t pid;
-    char read_fifo_path[255];
+    buf++;
+    printf("buf = %s\n", buf);
+    Property p;
+    p.width = media.width;
+    p.heigt = media.height;
 
-    strcpy(req,request);
-    temp = strchr(req,',');
-    if(temp == NULL)
-    {
-    	return NULL;
-    }
+    parse(buf, &p);
+    AirPlayerServer* server = AirPlayerServer::getInstance();
 
-    temp++;
-    //cout << temp <<endl;
-    req = strtok(req,",");
-	//cout << req <<endl;
-	
-    struct stat _stat;
-    DIR *dp;
-    if(lstat(req, &_stat) >= 0 && S_ISREG(_stat.st_mode))
-    {
-    	
-    	string confFile = "./ffserver.conf";
-		string str = string(temp); 
-		string videoName = string(req);
-		//cout << req << str <<endl;
-    	configFile = new ConfigFile(confFile,videoName);
-    	configFile->setVedioQuality(str);
-
-        //若选择直接播放，返回live555MediaServer的rtsp地址
-        if(configFile->getIsDirect()){
-            res = new string();
-            AirPlayerServer* server = AirPlayerServer::getInstance();
-            *res = string("rtsp://") + server->getLocalIP() + ":8554/" + videoName;
-            delete [] req;
-            delete configFile;
-            return res->c_str();
-        }	
-
-    	char command[BUFFER_SIZE];
-
-    	pid = getpid();
-    	confFile = "./ffserver.conf";
-    	sprintf(command,"loadconf %s %u \n",confFile.c_str(),pid);
-    	sprintf(read_fifo_path, "/tmp/return_state_fifo.%u", pid);
-
-    	if(system("rm -f /tmp/return_state_fifo*") < 0){
-            printf("cannot delete /tmp/return_state_fifo*");
-            return NULL;
-        } 
-		mkfifo(read_fifo_path,0777);
-    
-    	#ifdef DEBUG
-    	printf("str = %s\n",confFile.c_str()); 
-    	printf("str = %s\n",command); 
-    	#endif
-    
-    	if(access(read_fifo_path, F_OK) != 0)
-    	{
-        	printf("%s access faild\n",read_fifo_path);
-        	return NULL;
-    	}
-
-    	if(access(REQUEST_FIFO, F_OK) != 0)
-    	{
-        	printf("request_fifo access faild\n");
-        	return NULL;
-    	}
-
-    	if(!fifo_send(command,read_fifo_path))
-    	{
-		return NULL;
-    	}
-   
-        memset(command, '*', strlen(command) );
-
-
-        res = new string();
-        AirPlayerServer* server = AirPlayerServer::getInstance();
-        
-        *res = string("rtsp://") + server->getLocalIP() + ":" + configFile->getRTSPServerPort() + "/"   \
-            + "rtspVideo\n";
-        sprintf(command,"convert %s http://127.0.0.1:%s/feed1.ffm %u \n",req,configFile->getHTTPServerPort().c_str(),pid);
-        
-        #ifdef DEBUG
-        printf("str = %s\n",command);
-        #endif
-        if(!configFile->getIsDirect())
-		{
-        	if(!fifo_send(command,read_fifo_path))
-        	{
-	    		return NULL;
-        	}
-		}
-        else{
-
+    string* cmd = new string;
+    string path = media.fp;
+    if(p.qual == DIRECT){
+        bool r = checkRewrite(path);
+        if(r)
+        {
+            remove((path + "___DIRECT.ts").c_str());
         }
-	delete configFile;
+        //*res = string("rtsp://") + server->getLocalIP() + ":8554/" + media.fp;
     }
-    
-    delete [] req;
-	//cout << "fuck" <<endl;
-    if(res == NULL)
-    	return NULL;
-    return res->c_str();
-}
-
-bool PlayCommand::fifo_send(char *command,char *read_fifo_path)
-{
-    int fd_read;  
-    int fd_write;
-    char return_value[255];
-
-    fd_write = open(REQUEST_FIFO, O_WRONLY|O_NONBLOCK);
-    if(write(fd_write, command, strlen(command)) == -1)
-    {
-        #ifdef DEBUG
-	printf("Fuck!\n");
-        #endif 
-	return false;
+    else if(p.qual == HIGH){
+        path = media.fp + ".___HIGH.ts";
+        bool r = checkRewrite(path);
+        string shouldRewrite;
+        if(r){
+            shouldRewrite = " -y ";
+        
+            *cmd = string(pathFFMPEG) + "/ffmpeg -i \"" + media.fp + "\"" + shouldRewrite + " -vcodec libx264 \
+                -preset medium -threads 2 -acodec copy \"" + 
+                media.fp + ".___HIGH.ts\"";
+        }
     }
-    
-    close(fd_write);
-   
-    /*
-    while(access(read_fifo_path, F_OK) != 0) //等待服务进程创建通信的fifo  
-    {  
-        sleep(1);  
+    else if(p.qual == MEDIUM){
+        path = media.fp + ".___MEDIUM.ts";
+        bool r = checkRewrite(path);
+        string shouldRewrite;
+        if(r){
+            shouldRewrite = " -y ";
+        
+            stringstream resolution;
+            resolution << p.width << "x" << p.heigt;
+            *cmd = string(pathFFMPEG) + "/ffmpeg -i \"" + media.fp + "\""+ shouldRewrite + " -vcodec libx264 \
+                -preset veryfast -threads 2 -acodec aac -strict experimental -ab \
+                320k -s " + resolution.str() + " \"" + media.fp + ".___MEDIUM.ts\"";
+        }
     }
-    */
+    else if(p.qual == LOW){
+        path = media.fp + ".___LOW.ts";
+        bool r = checkRewrite(path);
+        string shouldRewrite;
+        if(r){
+            shouldRewrite = " -y ";
 
-    fd_read = open(read_fifo_path, O_RDONLY|O_NONBLOCK); 
-    
-    while((getline_from_fifo(fd_read,return_value,255))<=0);
+            stringstream resolution;
+            resolution << p.width << "x" << p.heigt;
+            *cmd = string(pathFFMPEG) + "/ffmpeg -i \"" + media.fp + "\""+ shouldRewrite + " -vcodec libx264 \
+                -preset ultrafast -tune fastdecode -crf 29 -threads 2 \
+                -acodec aac -strict experimental -ab \
+                192k -s " + resolution.str() + " \"" + media.fp + ".___LOW.ts\"";
+        }
+    }
+    if(!cmd->empty() && server->addConvertingMedia(path)){
+        pthread_t tid;
+        int err = pthread_create(&tid, NULL, mediaConvert, (void*)cmd);
+        if(err != 0){
+            printf("cannot launch ffmpeg.\n");
+            server->eraseConvertingMedia(path);
+            delete cmd;
+            return ;
+        }
+        //sleep(1);
+    }
+    stringstream ssportNum;
+    ssportNum << ":" << rtspServerPortNum << "/";
+    res = string("rtsp://") + server->getLocalIP() + ssportNum.str() + path;
     #ifdef DEBUG
-    printf("return = %s\n",return_value);    
+    printf("play %s\n", res.c_str());
     #endif
-
-    char *token=strtok(return_value," ");
-
-    if(strcmp(token,"OK")==0)
-    {
-	return true;
-    }else{
-	return false;
-    }
-
 }
 
 string PlayCommand::toString()
