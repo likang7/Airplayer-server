@@ -133,8 +133,8 @@ $(objFile)/FormatFilter.o: $(src)/FormatFilter.cpp FormatFilter.h
 		-o $@ ${CPLUSPLUS_FLAGS}
 	
 clean:
-	-rm $(objFile)/*.o
-	-rm $(mediaServerObj)/*.o
-	$(MAKE) -C $(LIVE_DIR)
-	-rm apserver
+	-rm -f $(objFile)/*.o
+	-rm -f $(mediaServerObj)/*.o
+	$(MAKE) clean -C $(LIVE_DIR)
+	-rm -f apserver
 
