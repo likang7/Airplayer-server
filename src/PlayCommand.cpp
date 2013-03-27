@@ -13,7 +13,7 @@ extern int rtspServerPortNum;
 extern char* pathFFMPEG;
 extern int getMediainfo(const std::string& fp, MediaInfo& media); 
 
-//#define DEBUG
+#define DEBUG
 
 //request的格式为filepath, 转码请求(如quality:xxx, fps:xxx)
 PlayCommand::PlayCommand(const char* _request) :
@@ -75,14 +75,17 @@ void fitDeviceResolution(Property* p, MediaInfo& media){
         #ifdef DEBUG
         printf("condition 5\n");
         #endif
+        p->heigt = p->width * media.height / media.width;
+        /*
         float ratio = 1.0 * media.width / media.height;
-        if(ratio > 0.01 && p->width / ratio > p->heigt && \
-            (media.width > p->width && media.height > p->heigt)){
+        float scale = 1.0 * media.width / p->width;
+        if(ratio > 0.01 && p->width / ratio > p->heigt){
             p->width = ratio * p->heigt;
         }
+        */
     }
-    p->width = (p->width / BLOCKSIZE) * BLOCKSIZE;
-    p->heigt = (p->heigt / BLOCKSIZE) * BLOCKSIZE; 
+    p->width = (int)((float)p->width / BLOCKSIZE + 0.5) * BLOCKSIZE;
+    p->heigt = (int)((float)p->heigt / BLOCKSIZE + 0.5) * BLOCKSIZE; 
 
     #ifdef DEBUG
     printf("width = %d, height = %d\n", p->width, p->heigt);
@@ -221,9 +224,12 @@ void PlayCommand::execute(std::string& res)
         string shouldRewrite;
         if(r){
             shouldRewrite = " -y ";
-        
+
+            stringstream resolution;
+            resolution << p.width << "x" << p.heigt;
+
             *cmd = string(pathFFMPEG) + "/ffmpeg -i \"" + media.fp + "\"" + shouldRewrite + " -vcodec libx264 \
-                -preset medium -threads 2 -acodec copy \"" + 
+                -preset medium -threads 2 -acodec copy -s " + resolution.str() + " \"" + 
                 media.fp + ".___HIGH.ts\"";
         }
     }

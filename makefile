@@ -2,7 +2,7 @@ INCLUDES = -I./live/UsageEnvironment/include -I./live/groupsock/include -I./live
 APCLUDES = -Isrc/include
 #
 ##### Change the following for your environment:
-COMPILE_OPTS =		$(INCLUDES) -I. -O2 -DSOCKLEN_T=socklen_t -D_LARGEFILE_SOURCE=1
+COMPILE_OPTS =	$(APCLUDES) -I. -O2 -DSOCKLEN_T=socklen_t -D_LARGEFILE_SOURCE=1
 C =			c
 C_COMPILER =		cc
 C_FLAGS =		$(COMPILE_OPTS) $(CPPFLAGS) $(CFLAGS)
@@ -24,11 +24,13 @@ src = src
 mediaServerSrc = $(src)/mediaServer
 objFile = src
 mediaServerObj = $(mediaServerSrc)
+VPATH = $(APHEAD):$(src)/mediaServer
 
 APHEAD = $(src)/include
 option = -O2 #-lpthread#-fprofile-arcs -ftest-coverage
 
-AP_OBJS = 	$(objFile)/DownloadCommand.o \
+AP_OBJS = 	$(objFile)/FormatFilter.o \
+			$(objFile)/DownloadCommand.o \
 			$(objFile)/GetSubtitlesCommand.o \
 			$(objFile)/PreviewCommand.o \
 			$(objFile)/HomeCommand.o \
@@ -54,79 +56,81 @@ LOCAL_LIBS =	$(LIVEMEDIA_LIB) $(GROUPSOCK_LIB) \
 		$(BASIC_USAGE_ENVIRONMENT_LIB) $(USAGE_ENVIRONMENT_LIB)
 LIBS =		$(LOCAL_LIBS) $(LIBS_FOR_CONSOLE_APPLICATION)
 
+#.$(CPP).$(OBJ):
+#	$(CPLUSPLUS_COMPILER) -c $(CPLUSPLUS_FLAGS) $<
 
 livemedia:
 	cd $(LIVE_DIR); make
 
 apserver: $(AP_OBJS)
-	g++ $(AP_OBJS) $(LIBS) ${option} -o apserver -lpthread
+	$(CPLUSPLUS_COMPILER) $(AP_OBJS) $(LIBS) ${CPLUSPLUS_FLAGS} -o apserver -lpthread
 	
 createDir:
 	mkdir -p $(objFile)
 
-$(objFile)/HomeCommand.o:$(src)/HomeCommand.cpp $(APHEAD)/AirPlayerServer.h \
-	$(APHEAD)/HomeCommand.h $(APHEAD)/Command.h
-	g++  $(APCLUDES) -c $(src)/HomeCommand.cpp -o $(objFile)/HomeCommand.o $(option)
+$(objFile)/HomeCommand.o:$(src)/HomeCommand.cpp AirPlayerServer.h \
+	HomeCommand.h Command.h
+	$(CPLUSPLUS_COMPILER) -c $(src)/HomeCommand.cpp -o $@ $(CPLUSPLUS_FLAGS)
 
 $(mediaServerObj)/DynamicRTSPServer.o:$(mediaServerSrc)/DynamicRTSPServer.cpp \
-	$(mediaServerSrc)/DynamicRTSPServer.h
-	g++ $(INCLUDES) -c $(mediaServerSrc)/DynamicRTSPServer.cpp -o \
-		$(mediaServerObj)/DynamicRTSPServer.o
+	DynamicRTSPServer.h
+	$(CPLUSPLUS_COMPILER) $(INCLUDES) -c $(mediaServerSrc)/DynamicRTSPServer.cpp -o $@ ${CPLUSPLUS_FLAGS} 
 
-$(objFile)/main.o: $(src)/main.cpp $(APHEAD)/AirPlayerServer.h 
-	g++ $(APCLUDES) $(INCLUDES) -c $(src)/main.cpp -o $(objFile)/main.o \
-		${option} -lpthread
+$(objFile)/main.o: $(src)/main.cpp AirPlayerServer.h 
+	$(CPLUSPLUS_COMPILER)  $(INCLUDES) -c $(src)/main.cpp -o $@ \
+		${CPLUSPLUS_FLAGS} -lpthread
 
-$(objFile)/AirPlayerServer.o: $(APHEAD)/AirPlayerServer.h $(APHEAD)/CommandFactory.h \
-	$(APHEAD)/Server.h $(src)/AirPlayerServer.cpp
-	g++  $(APCLUDES) -c $(src)/AirPlayerServer.cpp \
-		-o $(objFile)/AirPlayerServer.o ${option} 
+$(objFile)/AirPlayerServer.o: AirPlayerServer.h CommandFactory.h \
+	Server.h $(src)/AirPlayerServer.cpp
+	$(CPLUSPLUS_COMPILER)   -c $(src)/AirPlayerServer.cpp \
+		-o $@ ${CPLUSPLUS_FLAGS} 
 	
-$(objFile)/Server.o: $(src)/Server.cpp $(APHEAD)/Server.h
-	g++  $(APCLUDES) -c $(src)/Server.cpp -o $(objFile)/Server.o ${option} 
+$(objFile)/Server.o: $(src)/Server.cpp Server.h
+	$(CPLUSPLUS_COMPILER)   -c $(src)/Server.cpp -o $@ ${CPLUSPLUS_FLAGS} 
 	
-$(objFile)/Command.o: $(src)/Command.cpp $(APHEAD)/Command.h
-	g++  $(APCLUDES) -c $(src)/Command.cpp -o $(objFile)/Command.o ${option} 
+$(objFile)/Command.o: $(src)/Command.cpp Command.h
+	$(CPLUSPLUS_COMPILER)   -c $(src)/Command.cpp -o $@ ${CPLUSPLUS_FLAGS} 
 	
-$(objFile)/LsCommand.o: $(src)/LsCommand.cpp $(APHEAD)/Command.h \
-		$(APHEAD)/LsCommand.h
-	g++  $(APCLUDES) -c $(src)/LsCommand.cpp -o $(objFile)/LsCommand.o ${option} 
+$(objFile)/LsCommand.o: $(src)/LsCommand.cpp Command.h \
+		LsCommand.h FormatFilter.h
+	$(CPLUSPLUS_COMPILER)   -c $(src)/LsCommand.cpp -o $@ ${CPLUSPLUS_FLAGS} 
 	
-$(objFile)/PlayCommand.o: $(src)/PlayCommand.cpp $(APHEAD)/Command.h \
-	$(APHEAD)/PlayCommand.h $(APHEAD)/Property.h $(APHEAD)/MediaInfo.h \
-	$(APHEAD)/AirPlayerServer.h
-	g++ $(APCLUDES) -c $(src)/PlayCommand.cpp -o $(objFile)/PlayCommand.o ${option} 
+$(objFile)/PlayCommand.o: $(src)/PlayCommand.cpp Command.h \
+	PlayCommand.h Property.h MediaInfo.h AirPlayerServer.h
+	$(CPLUSPLUS_COMPILER)  -c $(src)/PlayCommand.cpp -o $@ ${CPLUSPLUS_FLAGS} 
 
-$(objFile)/DescribeCommand.o: $(src)/DescribeCommand.cpp $(APHEAD)/Command.h \
-	$(APHEAD)/DescribeCommand.h $(APHEAD)/AirPlayerServer.h
-	g++  $(APCLUDES) -c $(src)/DescribeCommand.cpp \
-		-o $(objFile)/DescribeCommand.o ${option} 
+$(objFile)/DescribeCommand.o: $(src)/DescribeCommand.cpp Command.h \
+	DescribeCommand.h AirPlayerServer.h
+	$(CPLUSPLUS_COMPILER)   -c $(src)/DescribeCommand.cpp \
+		-o $@ ${CPLUSPLUS_FLAGS} 
 	
 $(objFile)/CommandFactory.o: $(src)/CommandFactory.cpp \
-	$(APHEAD)/CommandFactory.h $(APHEAD)/Command.h \
-	$(APHEAD)/DescribeCommand.h $(APHEAD)/PreviewCommand.h \
-	$(APHEAD)/PlayCommand.h \
-	$(APHEAD)/LsCommand.h $(APHEAD)/Command.h $(APHEAD)/HomeCommand.h
-	g++  $(APCLUDES) -c $(src)/CommandFactory.cpp \
-		-o $(objFile)/CommandFactory.o ${option}
+	CommandFactory.h Command.h DescribeCommand.h PreviewCommand.h \
+	PlayCommand.h LsCommand.h Command.h HomeCommand.h
+	$(CPLUSPLUS_COMPILER)   -c $(src)/CommandFactory.cpp \
+		-o $@ ${CPLUSPLUS_FLAGS}
 
 $(objFile)/PreviewCommand.o:$(src)/PreviewCommand.cpp \
-	$(APHEAD)/Command.h $(APHEAD)/PreviewCommand.h $(APHEAD)/MediaInfo.h 
-	g++  $(APCLUDES) -c $(src)/PreviewCommand.cpp \
-		-o $(objFile)/PreviewCommand.o ${option}
+	Command.h PreviewCommand.h MediaInfo.h 
+	$(CPLUSPLUS_COMPILER)   -c $(src)/PreviewCommand.cpp \
+		-o $@ ${CPLUSPLUS_FLAGS}
 
-$(objFile)/MediaInfo.o: $(src)/MediaInfo.cpp $(APHEAD)/MediaInfo.h 
-	g++ $(APCLUDES) -c $(src)/MediaInfo.cpp -o $(objFile)/MediaInfo.o
+$(objFile)/MediaInfo.o: $(src)/MediaInfo.cpp MediaInfo.h 
+	$(CPLUSPLUS_COMPILER)  -c $(src)/MediaInfo.cpp -o $@ ${CPLUSPLUS_FLAGS}
 
 $(objFile)/GetSubtitlesCommand.o: $(src)/GetSubtitlesCommand.cpp \
-	$(APHEAD)/GetSubtitlesCommand.h $(APHEAD)/Command.h
-	g++ $(APCLUDES) -c $(src)/GetSubtitlesCommand.cpp \
-		-o $(objFile)/GetSubtitlesCommand.o ${option}
+	GetSubtitlesCommand.h Command.h
+	$(CPLUSPLUS_COMPILER)  -c $(src)/GetSubtitlesCommand.cpp \
+		-o $@ ${CPLUSPLUS_FLAGS}
 
 $(objFile)/DownloadCommand.o:$(src)/DownloadCommand.cpp \
-	$(APHEAD)/DownloadCommand.h $(APHEAD)/Command.h
-	g++ $(APCLUDES) -c $(src)/DownloadCommand.cpp \
-		-o $(objFile)/DownloadCommand.o ${option}
+	DownloadCommand.h Command.h
+	$(CPLUSPLUS_COMPILER)  -c $(src)/DownloadCommand.cpp \
+		-o $@ ${CPLUSPLUS_FLAGS}
+		
+$(objFile)/FormatFilter.o: $(src)/FormatFilter.cpp FormatFilter.h
+	$(CPLUSPLUS_COMPILER)  -c $(src)/FormatFilter.cpp \
+		-o $@ ${CPLUSPLUS_FLAGS}
 	
 clean:
 	-rm $(objFile)/*.o

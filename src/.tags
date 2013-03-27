@@ -1,0 +1,207 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+APCLUDES	makefile	/^APCLUDES = -Iinclude$/;"	m
+APHEAD	makefile	/^APHEAD = $(src)\/include$/;"	m
+AP_OBJS	makefile	/^AP_OBJS = 	$(objFile)\/FormatFilter.o \\$/;"	m
+AirPlayerServer	AirPlayerServer.cpp	/^AirPlayerServer::AirPlayerServer(int portNum, const std::string& content_dir) : $/;"	f	class:AirPlayerServer
+AirPlayerServer	include/AirPlayerServer.h	/^class AirPlayerServer : public Server$/;"	c
+Audio	mediaServer/DynamicRTSPServer.h	/^	Audio,$/;"	e	enum:Stream
+BASIC_USAGE_ENVIRONMENT_LIB	makefile	/^BASIC_USAGE_ENVIRONMENT_LIB = $(LIB_Dir)\/BasicUsageEnvironment\/libBasicUsageEnvironment.$(LIB_SUFFIX)$/;"	m
+BLOCKSIZE	PlayCommand.cpp	/^const int BLOCKSIZE = 16;$/;"	v
+BUFSIZE	LsCommand.cpp	8;"	d	file:
+BUFSIZE	include/Server.h	6;"	d
+C	makefile	/^C =			c$/;"	m
+COMPILE_OPTS	makefile	/^COMPILE_OPTS =		$(INCLUDES) -I. -O2 -DSOCKLEN_T=socklen_t -D_LARGEFILE_SOURCE=1$/;"	m
+CONSOLE_LINK_OPTS	makefile	/^CONSOLE_LINK_OPTS =	$(LINK_OPTS)$/;"	m
+CPLUSPLUS_COMPILER	makefile	/^CPLUSPLUS_COMPILER =	c++$/;"	m
+CPLUSPLUS_FLAGS	makefile	/^CPLUSPLUS_FLAGS =	$(COMPILE_OPTS) -Wall -DBSD=1 $(CPPFLAGS) $(CXXFLAGS)$/;"	m
+CPP	makefile	/^CPP =			cpp$/;"	m
+C_COMPILER	makefile	/^C_COMPILER =		cc$/;"	m
+C_FLAGS	makefile	/^C_FLAGS =		$(COMPILE_OPTS) $(CPPFLAGS) $(CFLAGS)$/;"	m
+Command	Command.cpp	/^Command::Command() $/;"	f	class:Command
+Command	include/Command.h	/^class Command$/;"	c
+CommandFactory	include/CommandFactory.h	/^class CommandFactory$/;"	c
+DIRECT	include/Property.h	/^    DIRECT,$/;"	e	enum:Option
+DescribeCommand	DescribeCommand.cpp	/^DescribeCommand::DescribeCommand(const char* _request) :$/;"	f	class:DescribeCommand
+DescribeCommand	include/DescribeCommand.h	/^class DescribeCommand : public Command$/;"	c
+DownloadCommand	DownloadCommand.cpp	/^DownloadCommand::DownloadCommand(const char* _fp, int _clfd) $/;"	f	class:DownloadCommand
+DownloadCommand	include/DownloadCommand.h	/^class DownloadCommand : public Command$/;"	c
+DynamicRTSPServer	mediaServer/DynamicRTSPServer.cpp	/^DynamicRTSPServer::DynamicRTSPServer(UsageEnvironment& env, int ourSocket,$/;"	f	class:DynamicRTSPServer
+DynamicRTSPServer	mediaServer/DynamicRTSPServer.h	/^class DynamicRTSPServer: public RTSPServerSupportingHTTPStreaming {$/;"	c
+ERROR	include/Server.h	/^	ERROR,$/;"	e	enum:TYPE
+ETH_NAME	Server.cpp	21;"	d	file:
+EXE	makefile	/^EXE =$/;"	m
+FormatFilter	FormatFilter.cpp	/^FormatFilter::FormatFilter(){$/;"	f	class:FormatFilter
+FormatFilter	include/FormatFilter.h	/^class FormatFilter{$/;"	c
+GROUPSOCK_LIB	makefile	/^GROUPSOCK_LIB = $(LIB_Dir)\/groupsock\/libgroupsock.$(LIB_SUFFIX)$/;"	m
+GetSubtitlesCommand	GetSubtitlesCommand.cpp	/^GetSubtitlesCommand::GetSubtitlesCommand(const char* _fp) : fp(_fp)$/;"	f	class:GetSubtitlesCommand
+GetSubtitlesCommand	include/GetSubtitlesCommand.h	/^class GetSubtitlesCommand : public Command$/;"	c
+HIGH	include/Property.h	/^    HIGH,$/;"	e	enum:Option
+HomeCommand	HomeCommand.cpp	/^HomeCommand::HomeCommand(const char* _path) :$/;"	f	class:HomeCommand
+HomeCommand	include/HomeCommand.h	/^class HomeCommand : public Command$/;"	c
+INCLUDES	makefile	/^INCLUDES = -I..\/live\/UsageEnvironment\/include -I..\/live\/groupsock\/include -I..\/live\/liveMedia\/include -I..\/live\/BasicUsageEnvironment\/include -Isrc\/include$/;"	m
+LIBRARY_LINK	makefile	/^LIBRARY_LINK =		ar cr $/;"	m
+LIBRARY_LINK_OPTS	makefile	/^LIBRARY_LINK_OPTS =	$/;"	m
+LIBS	makefile	/^LIBS =		$(LOCAL_LIBS) $(LIBS_FOR_CONSOLE_APPLICATION)$/;"	m
+LIBS_FOR_CONSOLE_APPLICATION	makefile	/^LIBS_FOR_CONSOLE_APPLICATION =$/;"	m
+LIBS_FOR_GUI_APPLICATION	makefile	/^LIBS_FOR_GUI_APPLICATION =$/;"	m
+LIB_Dir	makefile	/^LIB_Dir = $(LIVE_DIR)$/;"	m
+LIB_SUFFIX	makefile	/^LIB_SUFFIX =			a$/;"	m
+LINK	makefile	/^LINK =			c++ -o$/;"	m
+LINK_OPTS	makefile	/^LINK_OPTS =		-L. $(LDFLAGS)$/;"	m
+LIVEMEDIA_LIB	makefile	/^LIVEMEDIA_LIB = $(LIB_Dir)\/liveMedia\/libliveMedia.$(LIB_SUFFIX)$/;"	m
+LIVE_DIR	makefile	/^LIVE_DIR = ..\/live$/;"	m
+LOCAL_LIBS	makefile	/^LOCAL_LIBS =	$(LIVEMEDIA_LIB) $(GROUPSOCK_LIB) \\$/;"	m
+LOW	include/Property.h	/^    LOW,$/;"	e	enum:Option
+LsCommand	LsCommand.cpp	/^LsCommand::LsCommand(const char* _path) :$/;"	f	class:LsCommand
+LsCommand	include/LsCommand.h	/^class LsCommand : public Command$/;"	c
+MEDIUM	include/Property.h	/^    MEDIUM,$/;"	e	enum:Option
+MediaInfo	include/MediaInfo.h	/^class MediaInfo{$/;"	c
+MediaStream	mediaServer/DynamicRTSPServer.h	/^struct MediaStream{$/;"	s
+NEW_SMS	mediaServer/DynamicRTSPServer.cpp	101;"	d	file:
+OBJ	makefile	/^OBJ =			o$/;"	m
+OK	include/Server.h	/^	OK$/;"	e	enum:TYPE
+Option	include/Property.h	/^enum Option{$/;"	g
+PlayCommand	PlayCommand.cpp	/^PlayCommand::PlayCommand(const char* _request) :$/;"	f	class:PlayCommand
+PlayCommand	include/PlayCommand.h	/^class PlayCommand : public Command$/;"	c
+PreviewCommand	PreviewCommand.cpp	/^PreviewCommand::PreviewCommand(const char* _request, int _clfd) : $/;"	f	class:PreviewCommand
+PreviewCommand	include/PreviewCommand.h	/^class PreviewCommand : public Command$/;"	c
+Property	include/Property.h	/^	Property(){$/;"	f	struct:Property
+Property	include/Property.h	/^struct Property{$/;"	s
+Server	Server.cpp	/^Server::Server(int portNum):listenfd(-1)$/;"	f	class:Server
+Server	include/Server.h	/^class Server$/;"	c
+Stream	mediaServer/DynamicRTSPServer.h	/^enum Stream{$/;"	g
+Subtitle	mediaServer/DynamicRTSPServer.h	/^	Subtitle,$/;"	e	enum:Stream
+TYPE	include/Server.h	/^enum TYPE$/;"	g
+USAGE_ENVIRONMENT_LIB	makefile	/^USAGE_ENVIRONMENT_LIB = $(LIB_Dir)\/UsageEnvironment\/libUsageEnvironment.$(LIB_SUFFIX)$/;"	m
+VPATH	makefile	/^VPATH = include$/;"	m
+Video	mediaServer/DynamicRTSPServer.h	/^	Video,$/;"	e	enum:Stream
+WARNING	include/Server.h	/^	WARNING,$/;"	e	enum:TYPE
+_DYNAMIC_RTSP_SERVER_HH	mediaServer/DynamicRTSPServer.h	22;"	d
+__AIRPLAYERSERVER_H__	include/AirPlayerServer.h	2;"	d
+__COMMANDFACTORY_H__	include/CommandFactory.h	2;"	d
+__COMMAND_H__	include/Command.h	2;"	d
+__DESCRIBECOMMAND__H	include/DescribeCommand.h	2;"	d
+__DOWNLOADCOMMAND__H	include/DownloadCommand.h	2;"	d
+__FORMATFILTER__H	include/FormatFilter.h	2;"	d
+__GetSubtitlesCommand__H	include/GetSubtitlesCommand.h	2;"	d
+__HOMECOMMAND__H	include/HomeCommand.h	2;"	d
+__LSCOMMAND__H	include/LsCommand.h	2;"	d
+__MEDIAINFO_H__	include/MediaInfo.h	2;"	d
+__PLAYCOMMAND__H	include/PlayCommand.h	2;"	d
+__PPROPERTY_H__	include/Property.h	2;"	d
+__PREVIEWCOMMAND__H	include/PreviewCommand.h	2;"	d
+__SERVER_H__	include/Server.h	2;"	d
+addConvertingMedia	AirPlayerServer.cpp	/^bool AirPlayerServer::addConvertingMedia(const std::string& fp)$/;"	f	class:AirPlayerServer
+afterPlaying	mediaServer/DynamicRTSPServer.cpp	/^void afterPlaying(void* clientData) {$/;"	f
+bitRate	include/Property.h	/^	std::string bitRate;$/;"	m	struct:Property
+checkRewrite	PlayCommand.cpp	/^bool PlayCommand::checkRewrite(const std::string& fp)$/;"	f	class:PlayCommand
+clfd	include/DownloadCommand.h	/^ 	int clfd;$/;"	m	class:DownloadCommand
+clfd	include/PreviewCommand.h	/^ 	int clfd;$/;"	m	class:PreviewCommand
+content	mediaServer/DynamicRTSPServer.h	/^  std::string content;$/;"	m	struct:MediaStream
+content_dir	include/AirPlayerServer.h	/^        std::string content_dir;$/;"	m	class:AirPlayerServer
+convertMediaWithoutReEncoding	mediaServer/DynamicRTSPServer.cpp	/^int convertMediaWithoutReEncoding(const string srcFile, const string destpath, $/;"	f
+convertingMediaSet	include/AirPlayerServer.h	/^        std::set<std::string> convertingMediaSet;$/;"	m	class:AirPlayerServer
+cp	main.cpp	/^char* cp = (char*)".";$/;"	v
+create	CommandFactory.cpp	/^Command* CommandFactory::create(const string type, const char* request, int clfd)$/;"	f	class:CommandFactory
+createMPEG2TransportStreamIndexer	mediaServer/DynamicRTSPServer.cpp	/^int createMPEG2TransportStreamIndexer(const std::string inputFileName,UsageEnvironment* env){$/;"	f
+createMediaServer	main.cpp	/^void* createMediaServer(void* arg){$/;"	f
+createNew	mediaServer/DynamicRTSPServer.cpp	/^DynamicRTSPServer::createNew(UsageEnvironment& env, Port ourPort,$/;"	f	class:DynamicRTSPServer
+createNewSMS	mediaServer/DynamicRTSPServer.cpp	/^static ServerMediaSession* createNewSMS(UsageEnvironment& env,$/;"	f	file:
+daemonize	Server.cpp	/^void Server::daemonize(const string cmd)$/;"	f	class:Server
+demux	mediaServer/DynamicRTSPServer.cpp	/^static MatroskaFileServerDemux* demux;$/;"	v	file:
+duration	include/DescribeCommand.h	/^        std::string duration;$/;"	m	class:DescribeCommand
+duration	include/MediaInfo.h	/^    std::string duration;$/;"	m	class:MediaInfo
+eraseConvertingMedia	AirPlayerServer.cpp	/^void AirPlayerServer::eraseConvertingMedia(const std::string& fp){$/;"	f	class:AirPlayerServer
+execute	DescribeCommand.cpp	/^void DescribeCommand::execute(std::string& res)$/;"	f	class:DescribeCommand
+execute	DownloadCommand.cpp	/^void DownloadCommand::execute(std::string& res)$/;"	f	class:DownloadCommand
+execute	GetSubtitlesCommand.cpp	/^void GetSubtitlesCommand::execute(std::string& res)$/;"	f	class:GetSubtitlesCommand
+execute	HomeCommand.cpp	/^void HomeCommand::execute(std::string& res)$/;"	f	class:HomeCommand
+execute	LsCommand.cpp	/^void LsCommand::execute(std::string& res)$/;"	f	class:LsCommand
+execute	PlayCommand.cpp	/^void PlayCommand::execute(std::string& res)$/;"	f	class:PlayCommand
+execute	PreviewCommand.cpp	/^void PreviewCommand::execute(std::string& res)$/;"	f	class:PreviewCommand
+filename	include/MediaInfo.h	/^    std::string filename;\/\/filename$/;"	m	class:MediaInfo
+filesize	include/DescribeCommand.h	/^        std::string filesize;$/;"	m	class:DescribeCommand
+fitDeviceResolution	PlayCommand.cpp	/^void fitDeviceResolution(Property* p, MediaInfo& media){$/;"	f
+fp	include/DownloadCommand.h	/^ 	const char* fp;$/;"	m	class:DownloadCommand
+fp	include/GetSubtitlesCommand.h	/^ 	const char* fp;$/;"	m	class:GetSubtitlesCommand
+fp	include/MediaInfo.h	/^    std::string fp;\/\/file path$/;"	m	class:MediaInfo
+fps	include/Property.h	/^	std::string fps;$/;"	m	struct:Property
+getContent_dir	AirPlayerServer.cpp	/^const std::string AirPlayerServer::getContent_dir()$/;"	f	class:AirPlayerServer
+getFileSize	DescribeCommand.cpp	/^int DescribeCommand::getFileSize(const std::string fp){$/;"	f	class:DescribeCommand
+getInstance	AirPlayerServer.cpp	/^AirPlayerServer* AirPlayerServer::getInstance()$/;"	f	class:AirPlayerServer
+getLocalIP	Server.cpp	/^const char* Server::getLocalIP() $/;"	f	class:Server
+getMediaName	MediaInfo.cpp	/^std::string getMediaName(const std::string& fp){$/;"	f
+getMediainfo	DescribeCommand.cpp	/^int DescribeCommand::getMediainfo(const std::string fp)   $/;"	f	class:DescribeCommand
+getMediainfo	MediaInfo.cpp	/^int getMediainfo(const std::string& fp, MediaInfo& media)   $/;"	f
+getPort	Server.cpp	/^int Server::getPort() const$/;"	f	class:Server
+height	include/MediaInfo.h	/^    unsigned height;$/;"	m	class:MediaInfo
+heigt	include/Property.h	/^	unsigned heigt;$/;"	m	struct:Property
+hostname	include/Server.h	/^        std::string hostname;$/;"	m	class:Server
+init	FormatFilter.cpp	/^void FormatFilter::init()$/;"	f	class:FormatFilter
+init	Server.cpp	/^void Server::init()$/;"	f	class:Server
+init	main.cpp	/^void init(int argv, char* args[]){$/;"	f
+instance	include/AirPlayerServer.h	/^        static AirPlayerServer* instance;$/;"	m	class:AirPlayerServer
+isSupportFormat	FormatFilter.cpp	/^bool FormatFilter::isSupportFormat(const std::string& extension)$/;"	f	class:FormatFilter
+linux	main.cpp	17;"	d	file:
+listenfd	include/Server.h	/^        int listenfd;$/;"	m	class:Server
+logInf	Server.cpp	/^void Server::logInf(TYPE type, const string str)$/;"	f	class:Server
+lookupServerMediaSession	mediaServer/DynamicRTSPServer.cpp	/^DynamicRTSPServer::lookupServerMediaSession(char const* streamName) {$/;"	f	class:DynamicRTSPServer
+main	main.cpp	/^int main(int argv, char* args[])$/;"	f
+media	include/PlayCommand.h	/^        MediaInfo media;$/;"	m	class:PlayCommand
+mediaConvert	PlayCommand.cpp	/^void* mediaConvert(void *arg)$/;"	f
+mediaServerObj	makefile	/^mediaServerObj = $(mediaServerSrc)$/;"	m
+mediaServerSrc	makefile	/^mediaServerSrc = $(src)\/mediaServer$/;"	m
+mutex	include/AirPlayerServer.h	/^        pthread_mutex_t mutex;$/;"	m	class:AirPlayerServer
+newMatroskaDemuxWatchVariable	mediaServer/DynamicRTSPServer.cpp	/^static char newMatroskaDemuxWatchVariable;$/;"	v	file:
+objFile	makefile	/^objFile = .$/;"	m
+onMatroskaDemuxCreation	mediaServer/DynamicRTSPServer.cpp	/^static void onMatroskaDemuxCreation(MatroskaFileServerDemux* newDemux, void* \/*clientData*\/) {$/;"	f	file:
+openffserver	main.cpp	/^ bool openffserver(const char* path = ".\/ffserver")$/;"	f
+openmediaserver	main.cpp	/^bool openmediaserver(){$/;"	f
+option	makefile	/^option = -O2 #-lpthread#-fprofile-arcs -ftest-coverage$/;"	m
+parse	PlayCommand.cpp	/^int PlayCommand::parse(char* str, Property* p){$/;"	f	class:PlayCommand
+parse	PreviewCommand.cpp	/^int PreviewCommand::parse(char* str){$/;"	f	class:PreviewCommand
+parse_and_process	AirPlayerServer.cpp	/^void AirPlayerServer::parse_and_process(char* request, int clfd, string& reply)$/;"	f	class:AirPlayerServer
+path	include/HomeCommand.h	/^        const char* path;$/;"	m	class:HomeCommand
+path	include/LsCommand.h	/^        const char* path;$/;"	m	class:LsCommand
+pathFFMPEG	main.cpp	/^char* pathFFMPEG = (char*)"\/home\/lk\/ffmpeg";$/;"	v
+portNum	main.cpp	/^int portNum = 8188;$/;"	v
+printHelp	main.cpp	/^void printHelp()$/;"	f
+pthread_serve	AirPlayerServer.cpp	/^void* AirPlayerServer::pthread_serve(void* arg){$/;"	f	class:AirPlayerServer
+qual	include/Property.h	/^	Option qual;$/;"	m	struct:Property
+readTrackinfo	mediaServer/DynamicRTSPServer.cpp	/^int readTrackinfo(const char *cmd, vector<MediaStream>& res)   $/;"	f
+request	include/DescribeCommand.h	/^        const char* request;$/;"	m	class:DescribeCommand
+request	include/PlayCommand.h	/^        const char* request;$/;"	m	class:PlayCommand
+request	include/PreviewCommand.h	/^ 	const char* request;$/;"	m	class:PreviewCommand
+resolution	include/DescribeCommand.h	/^        std::string resolution;$/;"	m	class:DescribeCommand
+resolution	include/PreviewCommand.h	/^ 	std::string resolution;$/;"	m	class:PreviewCommand
+rtspServerPortNum	main.cpp	/^int rtspServerPortNum = 8554;$/;"	v
+run	Server.cpp	/^void Server::run()$/;"	f	class:Server
+serv_addr	include/Server.h	/^        struct sockaddr_in serv_addr;          $/;"	m	class:Server	typeref:struct:Server::sockaddr_in
+serve	AirPlayerServer.cpp	/^void AirPlayerServer::serve(int sockfd)$/;"	f	class:AirPlayerServer
+setContent_dir	AirPlayerServer.cpp	/^bool AirPlayerServer::setContent_dir(const std::string& path)$/;"	f	class:AirPlayerServer
+setPort	Server.cpp	/^void Server::setPort(int portNum)$/;"	f	class:Server
+setQuality	PlayCommand.cpp	/^void setQuality(const char* q, Property* p)$/;"	f
+src	makefile	/^src = .$/;"	m
+streamType	mediaServer/DynamicRTSPServer.h	/^  Stream streamType;$/;"	m	struct:MediaStream
+supportedFormats	FormatFilter.cpp	/^set<string> FormatFilter::supportedFormats;$/;"	m	class:FormatFilter	file:
+supportedFormats	include/FormatFilter.h	/^	static set<string> supportedFormats;$/;"	m	class:FormatFilter
+toString	DescribeCommand.cpp	/^string DescribeCommand::toString()$/;"	f	class:DescribeCommand
+toString	DownloadCommand.cpp	/^std::string DownloadCommand::toString()$/;"	f	class:DownloadCommand
+toString	GetSubtitlesCommand.cpp	/^std::string GetSubtitlesCommand::toString()$/;"	f	class:GetSubtitlesCommand
+toString	HomeCommand.cpp	/^string HomeCommand::toString()$/;"	f	class:HomeCommand
+toString	LsCommand.cpp	/^string LsCommand::toString()$/;"	f	class:LsCommand
+toString	PlayCommand.cpp	/^string PlayCommand::toString()$/;"	f	class:PlayCommand
+toString	PreviewCommand.cpp	/^std::string PreviewCommand::toString()$/;"	f	class:PreviewCommand
+width	include/MediaInfo.h	/^    unsigned width;$/;"	m	class:MediaInfo
+width	include/Property.h	/^	unsigned width;$/;"	m	struct:Property
+~AirPlayerServer	AirPlayerServer.cpp	/^AirPlayerServer::~AirPlayerServer()$/;"	f	class:AirPlayerServer
+~Command	Command.cpp	/^Command::~Command()$/;"	f	class:Command
+~DynamicRTSPServer	mediaServer/DynamicRTSPServer.cpp	/^DynamicRTSPServer::~DynamicRTSPServer() {$/;"	f	class:DynamicRTSPServer
+~HomeCommand	HomeCommand.cpp	/^HomeCommand::~HomeCommand()$/;"	f	class:HomeCommand
+~LsCommand	LsCommand.cpp	/^LsCommand::~LsCommand()$/;"	f	class:LsCommand
+~Server	Server.cpp	/^Server::~Server()$/;"	f	class:Server

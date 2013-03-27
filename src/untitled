@@ -1,0 +1,118 @@
+INCLUDES = -I../live/UsageEnvironment/include -I../live/groupsock/include -I../live/liveMedia/include -I../live/BasicUsageEnvironment/include -Isrc/include
+APCLUDES = -Iinclude
+#
+##### Change the following for your environment:
+COMPILE_OPTS =	$(APCLUDES)	$(INCLUDES) -I. -O2 -DSOCKLEN_T=socklen_t -D_LARGEFILE_SOURCE=1
+C =			c
+C_COMPILER =		cc
+C_FLAGS =		$(COMPILE_OPTS) $(CPPFLAGS) $(CFLAGS)
+CPP =			cpp
+CPLUSPLUS_COMPILER =	c++
+CPLUSPLUS_FLAGS =	$(COMPILE_OPTS) -Wall -DBSD=1 $(CPPFLAGS) $(CXXFLAGS)
+OBJ =			o
+LINK =			c++ -o
+LINK_OPTS =		-L. $(LDFLAGS)
+CONSOLE_LINK_OPTS =	$(LINK_OPTS)
+LIBRARY_LINK =		ar cr 
+LIBRARY_LINK_OPTS =	
+LIB_SUFFIX =			a
+LIBS_FOR_CONSOLE_APPLICATION =
+LIBS_FOR_GUI_APPLICATION =
+EXE =
+##### End of variables to change
+VPATH = include
+src = .
+mediaServerSrc = $(src)/mediaServer
+objFile = .
+mediaServerObj = $(mediaServerSrc)
+
+APHEAD = $(src)/include
+option = -O2 #-lpthread#-fprofile-arcs -ftest-coverage
+
+AP_OBJS = 	$(objFile)/FormatFilter.o \
+			$(objFile)/DownloadCommand.o \
+			$(objFile)/GetSubtitlesCommand.o \
+			$(objFile)/PreviewCommand.o \
+			$(objFile)/HomeCommand.o \
+		  	$(mediaServerObj)/DynamicRTSPServer.o  \
+			$(objFile)/AirPlayerServer.o \
+		  	$(objFile)/main.o \
+			$(objFile)/Server.o $(objFile)/Command.o\
+			$(objFile)/LsCommand.o $(objFile)/PlayCommand.o \
+			$(objFile)/DescribeCommand.o $(objFile)/CommandFactory.o\
+			$(objFile)/MediaInfo.o
+
+all:apserver
+
+LIVE_DIR = ../live
+
+LIB_Dir = $(LIVE_DIR)
+
+USAGE_ENVIRONMENT_LIB = $(LIB_Dir)/UsageEnvironment/libUsageEnvironment.$(LIB_SUFFIX)
+BASIC_USAGE_ENVIRONMENT_LIB = $(LIB_Dir)/BasicUsageEnvironment/libBasicUsageEnvironment.$(LIB_SUFFIX)
+LIVEMEDIA_LIB = $(LIB_Dir)/liveMedia/libliveMedia.$(LIB_SUFFIX)
+GROUPSOCK_LIB = $(LIB_Dir)/groupsock/libgroupsock.$(LIB_SUFFIX)
+LOCAL_LIBS =	$(LIVEMEDIA_LIB) $(GROUPSOCK_LIB) \
+		$(BASIC_USAGE_ENVIRONMENT_LIB) $(USAGE_ENVIRONMENT_LIB)
+LIBS =		$(LOCAL_LIBS) $(LIBS_FOR_CONSOLE_APPLICATION)
+
+.$(CPP).$(OBJ):
+	$(CPLUSPLUS_COMPILER) -c $(CPLUSPLUS_FLAGS) $<
+
+livemedia:
+	cd $(LIVE_DIR); make
+
+apserver: $(AP_OBJS)
+	g++ $(AP_OBJS) $(LIBS) ${option} -o apserver -lpthread
+	
+createDir:
+	mkdir -p $(objFile)
+
+HomeCommand.$(CPP):$(APHEAD)/AirPlayerServer.h \
+	$(APHEAD)/HomeCommand.h $(APHEAD)/Command.h
+
+$(mediaServerObj)/DynamicRTSPServer.o: $(mediaServerSrc)/DynamicRTSPServer.h
+	g++ $(INCLUDES) -c $(mediaServerSrc)/DynamicRTSPServer.cpp -o \
+		$(mediaServerObj)/DynamicRTSPServer.o
+
+$(objFile)/main.o:  $(APHEAD)/AirPlayerServer.h 
+	g++ $(APCLUDES) $(INCLUDES) -c $(src)/main.cpp -o $(objFile)/main.o \
+		${option} -lpthread
+
+AirPlayerServer.$(CPP): $(APHEAD)/AirPlayerServer.h $(APHEAD)/CommandFactory.h \
+	$(APHEAD)/Server.h 
+	
+Server.$(CPP):  $(APHEAD)/Server.h
+	
+Command.$(CPP):  $(APHEAD)/Command.h
+	
+LsCommand.$(CPP):  $(APHEAD)/Command.h \
+		$(APHEAD)/LsCommand.h $(APHEAD)/FormatFilter.h
+	
+PlayCommand.$(CPP):  $(APHEAD)/Command.h \
+	$(APHEAD)/PlayCommand.h $(APHEAD)/Property.h $(APHEAD)/MediaInfo.h \
+	$(APHEAD)/AirPlayerServer.h
+
+DescribeCommand.$(CPP):  $(APHEAD)/Command.h \
+	$(APHEAD)/DescribeCommand.h $(APHEAD)/AirPlayerServer.h
+	
+CommandFactory.$(CPP): $(APHEAD)/CommandFactory.h $(APHEAD)/Command.h \
+	$(APHEAD)/DescribeCommand.h $(APHEAD)/PreviewCommand.h \
+	$(APHEAD)/PlayCommand.h \
+	$(APHEAD)/LsCommand.h $(APHEAD)/Command.h $(APHEAD)/HomeCommand.h
+
+PreviewCommand.$(CPP):$(APHEAD)/Command.h $(APHEAD)/PreviewCommand.h $(APHEAD)/MediaInfo.h 
+
+MediaInfo.$(CPP): $(APHEAD)/MediaInfo.h 
+
+GetSubtitlesCommand.$(CPP): $(APHEAD)/GetSubtitlesCommand.h $(APHEAD)/Command.h
+
+DownloadCommand.$(CPP):DownloadCommand.h Command.h
+		
+FormatFilter.$(CPP): FormatFilter.h
+	
+clean:
+	-rm $(objFile)/*.o
+	-rm $(mediaServerObj)/*.o
+	#cd $(LIVE_DIR); make clean
+

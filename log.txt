@@ -355,3 +355,33 @@
 2013-3-23 17:39:58 ERROR cannot list the directory at null
 2013-3-23 18:2:42 ERROR cannot get the preview picture of /home/lk/Videos//Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn/Nausicaa.Of.The.Valley.Of.The.Wind.1984.Four.Audio.BDRip.X264-BMDruCHinYAn.cht.srt,resolution:256x144
 
+2013-3-24 21:47:48 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/All.Around.Us.2008/All.Around.Us.2008.DVDRip.XviD-MoST.chs.srt,resolution:256x144
+
+2013-3-24 21:48:1 ERROR cannot get the preview picture of /home/lk/Videos//到Videos的链接/Betty.Blue.1986.BluRay.720p.AC3.x264-CHD/Betty.Blue.1986.BluRay.720p.AC3.x264-CHD.chs.srt,resolution:256x144
+
+2013-3-24 21:48:32 converting video /home/lk/Videos//到Videos的链接/Betty.Blue.1986.BluRay.720p.AC3.x264-CHD/Betty.Blue.1986.BluRay.720p.AC3.x264-CHD.mkv.___LOW.ts
+2013-3-24 21:53:0 converting video /home/lk/Videos//0.mp4.___MEDIUM.ts
+2013-3-24 21:58:7 finished converting video /home/lk/Videos//0.mp4.___MEDIUM.ts
+2013-3-24 22:11:31 finished converting video /home/lk/Videos//到Videos的链接/Betty.Blue.1986.BluRay.720p.AC3.x264-CHD/Betty.Blue.1986.BluRay.720p.AC3.x264-CHD.mkv.___LOW.ts
+2013-3-25 17:18:32 converting video /home/lk/Videos//Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD/Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4.___LOW.ts
+2013-3-25 17:40:56 finished converting video /home/lk/Videos//Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD/Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4.___LOW.ts
+2013-3-25 17:45:23 converting video /home/lk/Videos//Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD/Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4.___HIGH.ts
+2013-3-25 17:46:33 finished converting video /home/lk/Videos//Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD/Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4.___HIGH.ts
+2013-3-25 17:46:55 converting video /home/lk/Videos//Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD/Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4.___LOW.ts
+2013-3-25 18:4:2 finished converting video /home/lk/Videos//Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD/Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4.___LOW.ts
+2013-3-26 21:35:38 getLocalP: ioctl error
+2013-3-26 23:37:1 getLocalP: ioctl error
+2013-3-26 23:37:5 getLocalP: ioctl error
+2013-3-26 23:37:33 2013-3-26 23:37:44 2013-3-26 23:39:34 2013-3-26 23:39:51 getLocalP: ioctl error
+2013-3-26 23:40:4 2013-3-26 23:40:7 getLocalP: ioctl error
+2013-3-26 23:42:18 getLocalP: ioctl error
+2013-3-26 23:42:42 getLocalP: ioctl error
+2013-3-27 0:26:21 getLocalP: ioctl error
+2013-3-27 0:36:37 ERROR cannot list the directory at /home/lk/Videos//天生杀人狂(未分级导演剪辑版).Natural.Born.Killers.Unrated.DC.1994.BluRay.X264.AAC.720p.SDHF-NORMTEAM
+2013-3-27 10:57:1 ERROR Unknown command : Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4
+2013-3-27 10:57:58 converting video /home/lk/Videos/Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4.___HIGH.ts
+2013-3-27 11:18:25 finished converting video /home/lk/Videos/Anna.Karenina.2012.BluRay.iPad.720p.AAC.x264-CHDPAD.mp4.___HIGH.ts
+2013-3-27 11:25:41 ERROR cannot get the preview picture of /home/lk/Videos//longlongago.mp3,resolution:256x144
+
+2013-3-27 11:25:45 ERROR cannot get the preview picture of /home/lk/Videos//longlongago.mp3,resolution:256x144
+

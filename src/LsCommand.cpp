@@ -1,4 +1,5 @@
 #include "LsCommand.h"
+#include "FormatFilter.h"
 #include <cstdio>
 #include <cstring>
 #include <sys/stat.h>
@@ -42,22 +43,29 @@ void LsCommand::execute(std::string& res)
 	//该目录下的文件数量
 	int num = 0;
     while((dirp = readdir(dp)) != NULL){
-    	if(dirp->d_name[0] == '.' && dirp->d_name[1] != '.')
+    	if(dirp->d_name[0] == '.' /*&& dirp->d_name[1] != '.'*/)
             continue;
+
     	sprintf(buf, "%s", dirp->d_name);
-    	res += "\n";
-    	res += buf;
     	
     	//给客户端增加文件信息，0表示是文件夹，1表示不是文件夹
     	if(lstat((string(path) + "/" + dirp->d_name).c_str(), &_stat) >= 0)
     	{
     		if(opendir((string(path) + "/" + dirp->d_name).c_str()) != NULL)
     		{
-    			res += ",0";
+    			res.append("\n");
+                res.append(buf);
+                res.append(",0");
 			}
 			else 
 			{
-				res += ",1";
+                const char* extension = strrchr(dirp->d_name, '.');
+                if(extension == NULL || \
+                    FormatFilter::isSupportFormat(extension) == false)
+                    continue;
+				res.append("\n");
+                res.append(buf);
+                res.append(",1");
 			}
     	}
 		num++;

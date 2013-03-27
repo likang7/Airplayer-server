@@ -18,7 +18,7 @@
 using namespace std;
 
 //默认使用的网卡为eth0
-#define ETH_NAME "eth0"
+extern char* ETH_NAME;
 
 /*
  * 构造函数

@@ -27,6 +27,8 @@ char* pathFFMPEG = (char*)"/home/lk/ffmpeg";
 //content path
 char* cp = (char*)".";
 
+//默认使用的网卡为eth0
+char* ETH_NAME = (char*)"wlan0";
 /*
  * 开启ffserver服务器
  */

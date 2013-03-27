@@ -124,42 +124,10 @@
 	"buffers":
 	[
 		{
-			"file": "DescribeCommand.cpp",
+			"file": "/home/lk/Desktop/test.cpp",
 			"settings":
 			{
-				"buffer_size": 3535,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "include/DownloadCommand.h",
-			"settings":
-			{
-				"buffer_size": 304,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "mediaServer/DynamicRTSPServer.cpp",
-			"settings":
-			{
-				"buffer_size": 17157,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "LsCommand.cpp",
-			"settings":
-			{
-				"buffer_size": 1352,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "GetSubtitlesCommand.cpp",
-			"settings":
-			{
-				"buffer_size": 1699,
+				"buffer_size": 1025,
 				"line_ending": "Unix"
 			}
 		}
@@ -240,12 +208,20 @@
 	},
 	"file_history":
 	[
+		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/main.cpp",
+		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/DescribeCommand.cpp",
+		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/include/DownloadCommand.h",
+		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/mediaServer/DynamicRTSPServer.cpp",
+		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/LsCommand.cpp",
+		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/include/FormatFilter.h",
+		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/FormatFilter.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/PlayCommand.cpp",
+		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/mediaServer/DynamicRTSPServer.h",
+		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/GetSubtitlesCommand.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/PreviewCommand.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/include/AirPlayerServer.h",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/AirPlayerServer.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/include/Server.h",
-		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/main.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/MediaInfo.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/include/MediaInfo.h",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/CommandFactory.cpp",
@@ -254,24 +230,20 @@
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/ap.sublime-project",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/Server.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/ap.sublime-project",
-		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/LsCommand.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/Command.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/HomeCommand.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/include/Command.h",
-		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/DescribeCommand.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/ap.sublime-workspace",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/PreviewCommand.h",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/makefile",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/PlayCommand.h",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/MediaInfo.h",
-		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/mediaServer/DynamicRTSPServer.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/AirPlayerServer.h",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/Command.h",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/DescribeCommand.h",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/HomeCommand.h",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/LsCommand.h",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/CommandFactory.h",
-		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/mediaServer/DynamicRTSPServer.h",
 		"/etc/dhcp/dhcpd.conf",
 		"/home/lk/Downloads/yfs-master/ads-lab/extent_server.h",
 		"/home/lk/Downloads/yfs-master/ads-lab/fuse.cc",
@@ -334,9 +306,13 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"DynamicRTSPServer",
+			"subtitle",
+			".add(\"",
+			"formats.",
 			"free",
 			"ffmpeg",
 			"filename",
@@ -389,6 +365,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"MyRTSPServer",
+			".insert(\".",
+			"supportedFormats."
 		],
 		"reverse": true,
 		"show_context": true,
@@ -399,145 +378,28 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "DescribeCommand.cpp",
+					"file": "/home/lk/Desktop/test.cpp",
 					"settings":
 					{
-						"buffer_size": 3535,
+						"buffer_size": 1025,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1241,
-								1241
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 634.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "include/DownloadCommand.h",
-					"settings":
-					{
-						"buffer_size": 304,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								304,
-								304
+								468,
+								468
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "mediaServer/DynamicRTSPServer.cpp",
-					"settings":
-					{
-						"buffer_size": 17157,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								14301,
-								14301
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4386.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "LsCommand.cpp",
-					"settings":
-					{
-						"buffer_size": 1352,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 561.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 4,
-					"file": "GetSubtitlesCommand.cpp",
-					"settings":
-					{
-						"buffer_size": 1699,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								130,
-								130
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -565,18 +427,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -596,7 +451,7 @@
 	},
 	"replace":
 	{
-		"height": 0.0
+		"height": 66.0
 	},
 	"save_all_on_build": true,
 	"select_file":

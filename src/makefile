@@ -1,5 +1,6 @@
-INCLUDES = -Iinclude
-MediaServerIncludes = -ImediaServer -I../live/UsageEnvironment/include -I../live/groupsock/include -I../live/liveMedia/include -I../live/BasicUsageEnvironment/include
+INCLUDES = -I../live/UsageEnvironment/include -I../live/groupsock/include -I../live/liveMedia/include -I../live/BasicUsageEnvironment/include -Isrc/include
+APCLUDES = -Iinclude
+#
 ##### Change the following for your environment:
 COMPILE_OPTS =		$(INCLUDES) -I. -O2 -DSOCKLEN_T=socklen_t -D_LARGEFILE_SOURCE=1
 C =			c
@@ -19,44 +20,119 @@ LIBS_FOR_CONSOLE_APPLICATION =
 LIBS_FOR_GUI_APPLICATION =
 EXE =
 ##### End of variables to change
+VPATH = include
 src = .
+mediaServerSrc = $(src)/mediaServer
 objFile = .
-option = -O2 -lpthread#-fprofile-arcs -ftest-coverage
+mediaServerObj = $(mediaServerSrc)
 
-AP_OBJS = $(objFile)/PreviewCommand.o $(objFile)/HomeCommand.o  $(objFile)/AirPlayerServer.o $(objFile)/main.o $(objFile)/Server.o $(objFile)/Command.o\
-	$(objFile)/LsCommand.o $(objFile)/PlayCommand.o $(objFile)/DescribeCommand.o $(objFile)/CommandFactory.o
+APHEAD = $(src)/include
+option = -O2 #-lpthread#-fprofile-arcs -ftest-coverage
 
-all:$(AP_OBJS)
+AP_OBJS = 	$(objFile)/FormatFilter.o \
+			$(objFile)/DownloadCommand.o \
+			$(objFile)/GetSubtitlesCommand.o \
+			$(objFile)/PreviewCommand.o \
+			$(objFile)/HomeCommand.o \
+		  	$(mediaServerObj)/DynamicRTSPServer.o  \
+			$(objFile)/AirPlayerServer.o \
+		  	$(objFile)/main.o \
+			$(objFile)/Server.o $(objFile)/Command.o\
+			$(objFile)/LsCommand.o $(objFile)/PlayCommand.o \
+			$(objFile)/DescribeCommand.o $(objFile)/CommandFactory.o\
+			$(objFile)/MediaInfo.o
 
-$(objFile)/HomeCommand.o:
-	g++  $(INCLUDES) -c $(src)/HomeCommand.cpp -o $(objFile)/HomeCommand.o $(option)
+all:apserver
 
-$(objFile)/main.o: 
-	g++ $(MediaServerIncludes) $(INCLUDES) -c $(src)/main.cpp -o $(objFile)/main.o ${option} 
+LIVE_DIR = ../live
 
-$(objFile)/AirPlayerServer.o: 
-	g++  $(INCLUDES) -c $(src)/AirPlayerServer.cpp -o $(objFile)/AirPlayerServer.o ${option} 
+LIB_Dir = $(LIVE_DIR)
+
+USAGE_ENVIRONMENT_LIB = $(LIB_Dir)/UsageEnvironment/libUsageEnvironment.$(LIB_SUFFIX)
+BASIC_USAGE_ENVIRONMENT_LIB = $(LIB_Dir)/BasicUsageEnvironment/libBasicUsageEnvironment.$(LIB_SUFFIX)
+LIVEMEDIA_LIB = $(LIB_Dir)/liveMedia/libliveMedia.$(LIB_SUFFIX)
+GROUPSOCK_LIB = $(LIB_Dir)/groupsock/libgroupsock.$(LIB_SUFFIX)
+LOCAL_LIBS =	$(LIVEMEDIA_LIB) $(GROUPSOCK_LIB) \
+		$(BASIC_USAGE_ENVIRONMENT_LIB) $(USAGE_ENVIRONMENT_LIB)
+LIBS =		$(LOCAL_LIBS) $(LIBS_FOR_CONSOLE_APPLICATION)
+
+.$(CPP).$(OBJ):
+	$(CPLUSPLUS_COMPILER) -c $(CPLUSPLUS_FLAGS) $<
+
+livemedia:
+	cd $(LIVE_DIR); make
+
+apserver: $(AP_OBJS)
+	g++ $(AP_OBJS) $(LIBS) ${option} -o apserver -lpthread
 	
-$(objFile)/Server.o: Server.cpp
-	g++  $(INCLUDES) -c $(src)/Server.cpp -o $(objFile)/Server.o ${option} 
-	
-$(objFile)/Command.o:
-	g++  $(INCLUDES) -c $(src)/Command.cpp -o $(objFile)/Command.o ${option} 
-	
-$(objFile)/LsCommand.o:
-	g++  $(INCLUDES) -c $(src)/LsCommand.cpp -o $(objFile)/LsCommand.o ${option} 
-	
-$(objFile)/PlayCommand.o:
-	g++ $(INCLUDES) -c $(src)/PlayCommand.cpp -o $(objFile)/PlayCommand.o ${option} 
+createDir:
+	mkdir -p $(objFile)
 
-$(objFile)/DescribeCommand.o:
-	g++  $(INCLUDES) -c $(src)/DescribeCommand.cpp -o $(objFile)/DescribeCommand.o ${option} 
-	
-$(objFile)/CommandFactory.o:
-	g++  $(INCLUDES) -c $(src)/CommandFactory.cpp -o $(objFile)/CommandFactory.o ${option}
+$(objFile)/HomeCommand.o:$(APHEAD)/AirPlayerServer.h \
+	$(APHEAD)/HomeCommand.h $(APHEAD)/Command.h
+	g++  $(APCLUDES) -c $(src)/HomeCommand.cpp -o $(objFile)/HomeCommand.o $(option)
 
-$(objFile)/PreviewCommand.o:
-	g++  $(INCLUDES) -c $(src)/PreviewCommand.cpp -o $(objFile)/PreviewCommand.o ${option}
+$(mediaServerObj)/DynamicRTSPServer.o: $(mediaServerSrc)/DynamicRTSPServer.h
+	g++ $(INCLUDES) -c $(mediaServerSrc)/DynamicRTSPServer.cpp -o \
+		$(mediaServerObj)/DynamicRTSPServer.o
+
+$(objFile)/main.o:  $(APHEAD)/AirPlayerServer.h 
+	g++ $(APCLUDES) $(INCLUDES) -c $(src)/main.cpp -o $(objFile)/main.o \
+		${option} -lpthread
+
+$(objFile)/AirPlayerServer.o: $(APHEAD)/AirPlayerServer.h $(APHEAD)/CommandFactory.h \
+	$(APHEAD)/Server.h 
+	g++  $(APCLUDES) -c $(src)/AirPlayerServer.cpp \
+		-o $(objFile)/AirPlayerServer.o ${option} 
+	
+$(objFile)/Server.o:  $(APHEAD)/Server.h
+	g++  $(APCLUDES) -c $(src)/Server.cpp -o $(objFile)/Server.o ${option} 
+	
+$(objFile)/Command.o:  $(APHEAD)/Command.h
+	g++  $(APCLUDES) -c $(src)/Command.cpp -o $(objFile)/Command.o ${option} 
+	
+$(objFile)/LsCommand.o:  $(APHEAD)/Command.h \
+		$(APHEAD)/LsCommand.h $(APHEAD)/FormatFilter.h
+	g++  $(APCLUDES) -c $(src)/LsCommand.cpp -o $(objFile)/LsCommand.o ${option} 
+	
+$(objFile)/PlayCommand.o:  $(APHEAD)/Command.h \
+	$(APHEAD)/PlayCommand.h $(APHEAD)/Property.h $(APHEAD)/MediaInfo.h \
+	$(APHEAD)/AirPlayerServer.h
+	g++ $(APCLUDES) -c $(src)/PlayCommand.cpp -o $(objFile)/PlayCommand.o ${option} 
+
+$(objFile)/DescribeCommand.o:  $(APHEAD)/Command.h \
+	$(APHEAD)/DescribeCommand.h $(APHEAD)/AirPlayerServer.h
+	g++  $(APCLUDES) -c $(src)/DescribeCommand.cpp \
+		-o $(objFile)/DescribeCommand.o ${option} 
+	
+$(objFile)/CommandFactory.o: $(APHEAD)/CommandFactory.h $(APHEAD)/Command.h \
+	$(APHEAD)/DescribeCommand.h $(APHEAD)/PreviewCommand.h \
+	$(APHEAD)/PlayCommand.h \
+	$(APHEAD)/LsCommand.h $(APHEAD)/Command.h $(APHEAD)/HomeCommand.h
+	g++  $(APCLUDES) -c $(src)/CommandFactory.cpp \
+		-o $(objFile)/CommandFactory.o ${option}
+
+$(objFile)/PreviewCommand.o:$(APHEAD)/Command.h $(APHEAD)/PreviewCommand.h $(APHEAD)/MediaInfo.h 
+	g++  $(APCLUDES) -c $(src)/PreviewCommand.cpp \
+		-o $(objFile)/PreviewCommand.o ${option}
+
+$(objFile)/MediaInfo.o: $(APHEAD)/MediaInfo.h 
+	g++ $(APCLUDES) -c $(src)/MediaInfo.cpp -o $(objFile)/MediaInfo.o
+
+$(objFile)/GetSubtitlesCommand.o: $(APHEAD)/GetSubtitlesCommand.h $(APHEAD)/Command.h
+	g++ $(APCLUDES) -c $(src)/GetSubtitlesCommand.cpp \
+		-o $(objFile)/GetSubtitlesCommand.o ${option}
+
+$(objFile)/DownloadCommand.o:$(src)/DownloadCommand.cpp \
+	$(APHEAD)/DownloadCommand.h $(APHEAD)/Command.h
+	g++ $(APCLUDES) -c $(src)/DownloadCommand.cpp \
+		-o $(objFile)/DownloadCommand.o ${option}
+		
+FormatFilter.$(CPP): FormatFilter.h
+	g++ $(APCLUDES) -c $(src)/FormatFilter.cpp ${option}
 	
 clean:
 	-rm $(objFile)/*.o
+	-rm $(mediaServerObj)/*.o
+	#cd $(LIVE_DIR); make clean
+
