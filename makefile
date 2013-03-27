@@ -135,5 +135,6 @@ $(objFile)/FormatFilter.o: $(src)/FormatFilter.cpp FormatFilter.h
 clean:
 	-rm $(objFile)/*.o
 	-rm $(mediaServerObj)/*.o
-	#cd $(LIVE_DIR); make clean
+	$(MAKE) -C $(LIVE_DIR)
+	-rm apserver
 
