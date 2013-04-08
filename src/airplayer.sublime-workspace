@@ -124,10 +124,58 @@
 	"buffers":
 	[
 		{
-			"file": "/home/lk/Desktop/test.cpp",
+			"file": "include/FormatFilter.h",
 			"settings":
 			{
-				"buffer_size": 1025,
+				"buffer_size": 306,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/lk/airplayer/sourceCode/AirPlayerServer/makefile",
+			"settings":
+			{
+				"buffer_size": 4894,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mediaServer/MyRTSPServer.cpp",
+			"settings":
+			{
+				"buffer_size": 17112,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "main.cpp",
+			"settings":
+			{
+				"buffer_size": 3750,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Server.cpp",
+			"settings":
+			{
+				"buffer_size": 4587,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "PlayCommand.cpp",
+			"settings":
+			{
+				"buffer_size": 7957,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mediaServer/MyRTSPServer.h",
+			"settings":
+			{
+				"buffer_size": 1911,
 				"line_ending": "Unix"
 			}
 		}
@@ -208,13 +256,17 @@
 	},
 	"file_history":
 	[
+		"/home/lk/airplayer/sourceCode/AirPlayerServer/makefile",
+		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/makefile",
+		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/untitled",
+		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/FormatFilter.cpp",
+		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/include/FormatFilter.h",
+		"/home/lk/Desktop/test.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/main.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/DescribeCommand.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/include/DownloadCommand.h",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/mediaServer/DynamicRTSPServer.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/LsCommand.cpp",
-		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/include/FormatFilter.h",
-		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/FormatFilter.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/PlayCommand.cpp",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/mediaServer/DynamicRTSPServer.h",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/GetSubtitlesCommand.cpp",
@@ -235,7 +287,6 @@
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/include/Command.h",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/ap.sublime-workspace",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/PreviewCommand.h",
-		"/home/lk/airplayer/sourceCode/AirPlayerServer/makefile",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/PlayCommand.h",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/MediaInfo.h",
 		"/home/lk/airplayer/sourceCode/AirPlayerServer/src/AirPlayerServer.h",
@@ -310,6 +361,19 @@
 		"find_history":
 		[
 			"DynamicRTSPServer",
+			"$(APCLUDES)",
+			"option",
+			"-o \\$\\(objFile\\).",
+			"-o \\$\\(objFile\\)*",
+			"-o \\$\\(objFile\\)*o",
+			"-o \\$\\(",
+			"-o \\$(",
+			"-o \\$?\\.o",
+			"-o \\$*\\.o",
+			"-o $",
+			"-o $*.o",
+			"g++",
+			"DynamicRTSPServer",
 			"subtitle",
 			".add(\"",
 			"formats.",
@@ -366,6 +430,11 @@
 		"replace_history":
 		[
 			"MyRTSPServer",
+			"",
+			" ",
+			"CPLUSPLUS_FLAGS",
+			"$(CPLUSPLUS_COMPILER)",
+			"MyRTSPServer",
 			".insert(\".",
 			"supportedFormats."
 		],
@@ -378,23 +447,23 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/home/lk/Desktop/test.cpp",
+					"file": "include/FormatFilter.h",
 					"settings":
 					{
-						"buffer_size": 1025,
+						"buffer_size": 306,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								468,
-								468
+								141,
+								141
 							]
 						],
 						"settings":
@@ -403,6 +472,172 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/lk/airplayer/sourceCode/AirPlayerServer/makefile",
+					"settings":
+					{
+						"buffer_size": 4894,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 918.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "mediaServer/MyRTSPServer.cpp",
+					"settings":
+					{
+						"buffer_size": 17112,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10969,
+								10969
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3328.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "main.cpp",
+					"settings":
+					{
+						"buffer_size": 3750,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1960,
+								1960
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 816.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Server.cpp",
+					"settings":
+					{
+						"buffer_size": 4587,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								345,
+								331
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "PlayCommand.cpp",
+					"settings":
+					{
+						"buffer_size": 7957,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1910,
+								1910
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 969.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "mediaServer/MyRTSPServer.h",
+					"settings":
+					{
+						"buffer_size": 1911,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1201,
+								1201
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 102.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -443,7 +678,7 @@
 	"menu_visible": true,
 	"output.clang":
 	{
-		"height": 114.0
+		"height": 131.0
 	},
 	"output.exec":
 	{

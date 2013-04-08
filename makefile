@@ -34,7 +34,7 @@ AP_OBJS = 	$(objFile)/FormatFilter.o \
 			$(objFile)/GetSubtitlesCommand.o \
 			$(objFile)/PreviewCommand.o \
 			$(objFile)/HomeCommand.o \
-		  	$(mediaServerObj)/DynamicRTSPServer.o  \
+		  	$(mediaServerObj)/MyRTSPServer.o  \
 			$(objFile)/AirPlayerServer.o \
 		  	$(objFile)/main.o \
 			$(objFile)/Server.o $(objFile)/Command.o\
@@ -72,9 +72,9 @@ $(objFile)/HomeCommand.o:$(src)/HomeCommand.cpp AirPlayerServer.h \
 	HomeCommand.h Command.h
 	$(CPLUSPLUS_COMPILER) -c $(src)/HomeCommand.cpp -o $@ $(CPLUSPLUS_FLAGS)
 
-$(mediaServerObj)/DynamicRTSPServer.o:$(mediaServerSrc)/DynamicRTSPServer.cpp \
-	DynamicRTSPServer.h
-	$(CPLUSPLUS_COMPILER) $(INCLUDES) -c $(mediaServerSrc)/DynamicRTSPServer.cpp -o $@ ${CPLUSPLUS_FLAGS} 
+$(mediaServerObj)/MyRTSPServer.o:$(mediaServerSrc)/MyRTSPServer.cpp \
+	MyRTSPServer.h
+	$(CPLUSPLUS_COMPILER) $(INCLUDES) -c $(mediaServerSrc)/MyRTSPServer.cpp -o $@ ${CPLUSPLUS_FLAGS} 
 
 $(objFile)/main.o: $(src)/main.cpp AirPlayerServer.h 
 	$(CPLUSPLUS_COMPILER)  $(INCLUDES) -c $(src)/main.cpp -o $@ \

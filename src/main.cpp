@@ -1,5 +1,5 @@
 #include "AirPlayerServer.h"
-#include "mediaServer/DynamicRTSPServer.h"
+#include "mediaServer/MyRTSPServer.h"
 #include <BasicUsageEnvironment.hh>
 #include <stdio.h>
 #include <iostream>
@@ -72,7 +72,7 @@ void* createMediaServer(void* arg){
     UserAuthenticationDatabase* authDB = NULL;
     // Create the RTSP server with the port number:
     RTSPServer* rtspServer;
-    rtspServer = DynamicRTSPServer::createNew(*env,
+    rtspServer = MyRTSPServer::createNew(*env,
     rtspServerPortNum, authDB);
     if (rtspServer == NULL) {
         *env << "Failed to create RTSP server: " <<

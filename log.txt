@@ -385,3 +385,4 @@
 
 2013-3-27 11:25:45 ERROR cannot get the preview picture of /home/lk/Videos//longlongago.mp3,resolution:256x144
 
+2013-4-8 17:19:5 getLocalP: ioctl error
