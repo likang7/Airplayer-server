@@ -8,12 +8,12 @@ and be converted to fit the Android device in the fly at the same time. </br>
 
 Dependency Information
 ======================
-FFmpeg </br>
-git://source.ffmpeg.org/ffmpeg.git</br>
-enable-libx264 needed</br>
+FFmpeg  
+git://source.ffmpeg.org/ffmpeg.git  
+enable-libx264 needed
 
-Live555</br>
-http://www.live555.com/liveMedia/</br>
+Live555  
+http://www.live555.com/liveMedia  
 
 Installation
 ============
@@ -21,9 +21,9 @@ make
 
 Usage
 =====
-./apserver cp portNumber pathname ethname  </br>
-cp : the path of the content file </br>
-portNumber : the port number of airPlayerServer </br>
-ethname : the eth of the shared network </br>
+./apserver cp portNumber pathname ethname  
+cp : the path of the content file  
+portNumber : the port number of airPlayerServer  
+ethname : the eth of the shared network   
 
 default setting : ./apserver . 8188 /usr/bin eth0 </br>
