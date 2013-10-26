@@ -4,7 +4,10 @@ Airplayer_server
 A video-on-demand platform on Linux and Android</br>
 A project to help watch the PC’s video on phone via WIFI! </br>
 The needed information can be transferred through clients based on FFMPEG/Live555/RTSP, </br>
-and be converted to fit the Android device in the fly at the same time. </br>
+and be converted to fit the Android device in the fly at the same time.  
+
+This the linux server. The Android client can be download at:
+https://github.com/likang7/Airplayer-cilent.git
 
 Dependency Information
 ======================
